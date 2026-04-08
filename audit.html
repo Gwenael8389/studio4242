@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un Audit Gratuit | Studio 4242</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a', } } } } }</script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
+
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
+                    <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
+                </a>
+                
+                <nav class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
+                    <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
+                    <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
+                    <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
+                    <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
+                    <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
+                    <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
+                    <a href="audit.html" class="text-brand-600 border-b-2 border-brand-600 transition">Audit Gratuit</a>
+                </nav>
+
+                <div class="hidden lg:block">
+                    <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl">Contact</a>
+                </div>
+
+                <button id="mobile-btn" class="lg:hidden p-2 text-slate-900 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl">
+            <div class="px-4 pt-4 pb-6 space-y-3 flex flex-col">
+                <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
+                <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
+                <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
+                <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
+                <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
+                <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
+                <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
+                <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-4">Contactez-nous</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-16 pb-24 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-brand-50 rounded-full blur-3xl opacity-50 -z-10"></div>
+        
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 mb-4">Audit Technique Gratuit</h1>
+                <p class="text-lg text-slate-600">Évaluez la sécurité, la conformité RGAA et la performance du site de votre commune. Remplissez ce formulaire pour recevoir une analyse détaillée.</p>
+            </div>
+
+            <div id="success-message" class="hidden bg-white p-10 rounded-3xl border border-green-200 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-green-500"></div>
+                <div class="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 text-green-500">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-3xl font-black mb-4 text-slate-900">Demande d'audit reçue !</h3>
+                <p class="text-lg text-slate-600 mb-8">L'équipe technique de Studio 4242 va analyser les données de votre commune. Nous vous recontacterons sous 48h avec nos premiers retours.</p>
+                <a href="index.html" class="inline-block px-8 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-brand-600 transition shadow-lg">Retour à l'accueil</a>
+            </div>
+
+            <div id="form-container" class="bg-white p-6 md:p-10 rounded-3xl shadow-xl border border-slate-100 relative" data-aos="fade-up" data-aos-delay="100">
+                
+                <div class="mb-10">
+                    <div class="flex justify-between text-xs font-bold text-slate-400 mb-3 uppercase tracking-widest hidden sm:flex">
+                        <span id="step-text-1" class="text-brand-600">1. La Commune</span>
+                        <span id="step-text-2">2. État des Lieux</span>
+                        <span id="step-text-3">3. Le Projet</span>
+                        <span id="step-text-4">4. Rapport</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                        <div id="progress-bar" class="bg-brand-600 h-3 rounded-full transition-all duration-500 w-1/4 relative">
+                            <div class="absolute top-0 right-0 bottom-0 left-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0tMiAxMGwxMi0xMnoiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=')] opacity-50"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="audit-form" action="https://formspree.io/f/xwvwzbqd" method="POST">
+                    
+                    <div id="step-1" class="space-y-6">
+                        <h2 class="text-2xl font-black text-slate-900 mb-2">Parlez-nous de votre commune</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nom de la Commune *</label>
+                                <input type="text" name="commune" required class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 focus:ring-0 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Code Postal</label>
+                                <input type="text" name="code_postal" class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nombre d'habitants</label>
+                                <select name="habitants" class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white appearance-none cursor-pointer">
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="< 500">Moins de 500</option>
+                                    <option value="500 - 2000">De 500 à 2 000</option>
+                                    <option value="2000 - 5000">De 2 000 à 5 000</option>
+                                    <option value="> 5000">Plus de 5 000</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">URL du site actuel (si existant)</label>
+                                <input type="url" name="url_site" placeholder="ex: https://www.ma-commune.fr" class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                        </div>
+                        <div class="pt-6 flex justify-end">
+                            <button type="button" onclick="nextStep(2)" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-10 rounded-xl transition shadow-lg flex items-center gap-2">
+                                Étape suivante <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="step-2" class="hidden space-y-6">
+                        <h2 class="text-2xl font-black text-slate-900 mb-2">Diagnostic de l'existant</h2>
+                        <p class="text-slate-500 mb-6">Quelles sont les faiblesses de votre système actuel ? (Plusieurs choix possibles)</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="relative cursor-pointer group">
+                                <input type="checkbox" name="faiblesse_mobile" value="Oui" class="peer sr-only">
+                                <div class="p-5 rounded-2xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 transition group-hover:border-brand-300">
+                                    <span class="font-black text-slate-900 block mb-1">Pas adapté aux Mobiles</span>
+                                    <span class="text-sm text-slate-500">L'affichage est cassé sur smartphone.</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input type="checkbox" name="faiblesse_rgaa" value="Oui" class="peer sr-only">
+                                <div class="p-5 rounded-2xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 transition group-hover:border-brand-300">
+                                    <span class="font-black text-slate-900 block mb-1">Non-conforme RGAA</span>
+                                    <span class="text-sm text-slate-500">Problèmes d'accessibilité (handicap).</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input type="checkbox" name="faiblesse_securite" value="Oui" class="peer sr-only">
+                                <div class="p-5 rounded-2xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 transition group-hover:border-brand-300">
+                                    <span class="font-black text-slate-900 block mb-1">Failles de sécurité</span>
+                                    <span class="text-sm text-slate-500">Pas de HTTPS ou mises à jour obsolètes.</span>
+                                </div>
+                            </label>
+                            <label class="relative cursor-pointer group">
+                                <input type="checkbox" name="faiblesse_admin" value="Oui" class="peer sr-only">
+                                <div class="p-5 rounded-2xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 transition group-hover:border-brand-300">
+                                    <span class="font-black text-slate-900 block mb-1">Interface complexe</span>
+                                    <span class="text-sm text-slate-500">Le secrétariat perd du temps à publier.</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="pt-6 flex justify-between items-center border-t border-slate-100">
+                            <button type="button" onclick="prevStep(1)" class="text-slate-400 font-bold hover:text-slate-900 transition flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Retour
+                            </button>
+                            <button type="button" onclick="nextStep(3)" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-10 rounded-xl transition shadow-lg">Suivant</button>
+                        </div>
+                    </div>
+
+                    <div id="step-3" class="hidden space-y-6">
+                        <h2 class="text-2xl font-black text-slate-900 mb-2">Votre vision</h2>
+                        <p class="text-slate-500 mb-6">Aidez-nous à comprendre vos attentes pour ce futur site.</p>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Objectif principal</label>
+                            <select name="objectif" class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white appearance-none cursor-pointer">
+                                <option value="Informer les citoyens">Mieux informer les citoyens (Actualités, alertes)</option>
+                                <option value="Démarches en ligne">Digitaliser les démarches administratives</option>
+                                <option value="Tourisme et attractivité">Améliorer l'attractivité et le tourisme</option>
+                                <option value="Tout à la fois">Une refonte totale (Tout à la fois)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Calendrier souhaité</label>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <label class="flex-1 text-center cursor-pointer">
+                                    <input type="radio" name="calendrier" value="Dès que possible" class="peer sr-only" required>
+                                    <div class="py-3 px-4 rounded-xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 peer-checked:text-brand-700 font-bold text-slate-500 transition">Dès que possible</div>
+                                </label>
+                                <label class="flex-1 text-center cursor-pointer">
+                                    <input type="radio" name="calendrier" value="Dans les 3 à 6 mois" class="peer sr-only">
+                                    <div class="py-3 px-4 rounded-xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 peer-checked:text-brand-700 font-bold text-slate-500 transition">3 à 6 mois</div>
+                                </label>
+                                <label class="flex-1 text-center cursor-pointer">
+                                    <input type="radio" name="calendrier" value="Prochain budget" class="peer sr-only">
+                                    <div class="py-3 px-4 rounded-xl border-2 border-slate-200 peer-checked:border-brand-600 peer-checked:bg-brand-50 peer-checked:text-brand-700 font-bold text-slate-500 transition">Prochain budget</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Des détails supplémentaires ?</label>
+                            <textarea name="details_projet" rows="3" placeholder="Avez-vous un cahier des charges, des couleurs spécifiques en tête..." class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white"></textarea>
+                        </div>
+
+                        <div class="pt-6 flex justify-between items-center border-t border-slate-100">
+                            <button type="button" onclick="prevStep(2)" class="text-slate-400 font-bold hover:text-slate-900 transition flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Retour
+                            </button>
+                            <button type="button" onclick="nextStep(4)" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 px-10 rounded-xl transition shadow-lg">Dernière étape</button>
+                        </div>
+                    </div>
+
+                    <div id="step-4" class="hidden space-y-6">
+                        <h2 class="text-2xl font-black text-slate-900 mb-2">Où devons-nous envoyer le rapport ?</h2>
+                        <p class="text-slate-500 mb-6">Dernière étape ! Laissez-nous vos coordonnées professionnelles.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Nom, Prénom *</label>
+                                <input type="text" name="contact_nom" required class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Fonction (Maire, Secrétaire...)</label>
+                                <input type="text" name="contact_fonction" required class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Téléphone direct</label>
+                                <input type="tel" name="contact_tel" class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">E-mail professionnel *</label>
+                                <input type="email" name="contact_email" required class="w-full px-5 py-4 rounded-xl border-2 border-slate-200 focus:border-brand-600 outline-none transition bg-slate-50 focus:bg-white">
+                            </div>
+                        </div>
+
+                        <div class="pt-8 flex flex-col-reverse sm:flex-row justify-between items-center border-t border-slate-100 gap-4">
+                            <button type="button" onclick="prevStep(3)" class="text-slate-400 font-bold hover:text-slate-900 transition w-full sm:w-auto text-center">
+                                ← Revenir en arrière
+                            </button>
+                            <button type="submit" id="submit-btn" class="bg-slate-900 hover:bg-brand-600 text-white font-black py-5 px-10 rounded-xl transition shadow-2xl text-lg w-full sm:w-auto flex items-center justify-center gap-3">
+                                Terminer et Envoyer <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </button>
+                        </div>
+                        <p class="text-xs text-center text-slate-400 mt-4">Conformément au RGPD, vos données sont sécurisées et strictement confidentielles.</p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
+                    <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
+                </div>
+                <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web pour le secteur public en Région Sud. Solutions souveraines, conformes RGPD et RGAA.</p>
+                <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition">Nous contacter</a>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Navigation</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
+                    <li><a href="tarifs.html" class="hover:text-white transition">Tarifs & Packs</a></li>
+                    <li><a href="a-propos.html" class="hover:text-white transition">L'Agence</a></li>
+                    <li><a href="audit.html" class="hover:text-white transition text-brand-400 font-bold">Audit Gratuit</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Informations</h4>
+                <ul class="space-y-3 text-sm">
+                    <li>SIRET : 102 977 683 00014</li>
+                    <li>83500 La Seyne-sur-Mer, France</li>
+                    <li><a href="mentions-legales.html" class="underline hover:text-white transition">Mentions Légales</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init Animations et Mobile Menu
+        AOS.init({ once: true, offset: 50 });
+        document.getElementById('mobile-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Gestion Multi-Étapes du Formulaire Audit
+        function nextStep(step) {
+            document.getElementById('step-' + (step - 1)).classList.add('hidden');
+            document.getElementById('step-' + step).classList.remove('hidden');
+            updateProgress(step);
+        }
+
+        function prevStep(step) {
+            document.getElementById('step-' + (step + 1)).classList.add('hidden');
+            document.getElementById('step-' + step).classList.remove('hidden');
+            updateProgress(step);
+        }
+
+        function updateProgress(step) {
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.className = `bg-brand-600 h-3 rounded-full transition-all duration-500 relative w-${step}/4`;
+            
+            for (let i = 1; i <= 4; i++) {
+                const text = document.getElementById('step-text-' + i);
+                if(text) {
+                    text.className = i === step ? 'text-brand-600' : 'text-slate-400';
+                }
+            }
+        }
+
+        // Soumission AJAX (sans rechargement)
+        const form = document.getElementById('audit-form');
+        const formContainer = document.getElementById('form-container');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            submitBtn.innerHTML = 'Traitement en cours...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formContainer.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    alert("Erreur serveur. Veuillez réessayer.");
+                    resetBtn();
+                }
+            } catch (error) {
+                alert("Erreur de connexion. Vérifiez votre réseau.");
+                resetBtn();
+            }
+        });
+
+        function resetBtn() {
+            submitBtn.innerHTML = 'Terminer et Envoyer';
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+    </script>
+</body>
+</html>
