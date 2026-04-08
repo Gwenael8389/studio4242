@@ -3,215 +3,518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio 4242 | Ingénierie Web pour les Collectivités</title>
+    <title>Studio 4242 | Ingénierie Web Souveraine pour les Collectivités Locales</title>
+    <meta name="description" content="Studio 4242 modernise les sites des mairies et collectivités de la Région Sud. Solutions Python/Django souveraines, conformes RGPD, RGAA et SecNumCloud. Audit gratuit.">
+    <meta name="keywords" content="site mairie, ingénierie web collectivités, RGPD, RGAA, souverain, Région Sud, La Seyne-sur-Mer, Montpellier">
+    <meta property="og:title" content="Studio 4242 | Ingénierie Web pour les Collectivités">
+    <meta property="og:description" content="Portails citoyens sur-mesure, sécurisés et conformes. Hébergement 100% français.">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script>
         tailwind.config = {
-            theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a', } } } }
+            theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' } } } }
         }
     </script>
     <style>
-        .gradient-text { background: linear-gradient(90deg, #3b82f6, #1e3a8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-text { background: linear-gradient(135deg, #2563eb, #1e3a8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #2563eb, #60a5fa); z-index: 9999; transition: width 0.1s; }
+        .badge-fr { background: linear-gradient(135deg, #002395 33%, #fff 33%, #fff 66%, #ED2939 66%); }
+        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(37,99,235,0.12); }
+        .check-green { color: #16a34a; }
+        .check-red { color: #dc2626; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+        .float { animation: float 4s ease-in-out infinite; }
+        @keyframes pulse-slow { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
     </style>
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Studio 4242",
+      "description": "Ingénierie web souveraine pour les collectivités locales de la Région Sud",
+      "url": "https://studio4242.fr",
+      "telephone": "07 83 49 48 49",
+      "email": "gwenael.drouet@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "188 les allées de tamaris",
+        "addressLocality": "La Seyne-sur-Mer",
+        "postalCode": "83500",
+        "addressCountry": "FR"
+      },
+      "sameAs": [],
+      "founder": { "@type": "Person", "name": "Gwénaël Drouet" },
+      "areaServed": "Région Sud, PACA, Occitanie",
+      "priceRange": "€€"
+    }
+    </script>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+<body class="bg-slate-50 font-sans text-slate-800 antialiased overflow-x-hidden">
 
-    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
-                    <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
-                </a>
-                
-                <nav class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
-                    <a href="index.html" class="text-brand-600 border-b-2 border-brand-600 transition">Accueil</a>
-                    <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
-                    <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
-                    <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
-                    <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
-                    <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
-                    <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
-                </nav>
+<!-- Scroll Progress Bar -->
+<div id="progress-bar" style="width:0%"></div>
 
-                <div class="hidden lg:block">
-                    <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl">Contact</a>
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[9998] bg-slate-900 text-white p-4 shadow-2xl border-t border-slate-700" style="display:none">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+        <div class="flex items-start gap-3">
+            <span class="text-2xl">🍪</span>
+            <div>
+                <p class="font-bold text-sm mb-1">Ce site respecte votre vie privée.</p>
+                <p class="text-slate-400 text-xs max-w-xl">Nous n'utilisons aucun cookie de tracking tiers. Seuls des cookies fonctionnels strictement nécessaires sont déposés. Conformément au RGPD et aux recommandations CNIL.</p>
+            </div>
+        </div>
+        <div class="flex gap-3 flex-shrink-0">
+            <button onclick="acceptCookies()" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold px-5 py-2 rounded-lg transition">Accepter</button>
+            <button onclick="acceptCookies()" class="bg-slate-700 hover:bg-slate-600 text-white text-sm font-bold px-5 py-2 rounded-lg transition">Continuer sans accepter</button>
+        </div>
+    </div>
+</div>
+
+<!-- Back to top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition: opacity 0.3s">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<!-- HEADER -->
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
+                <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
+            </a>
+            <nav class="hidden lg:flex space-x-7 text-xs font-bold uppercase tracking-widest items-center">
+                <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
+                <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
+                <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
+                <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
+                <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
+                <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
+                <a href="guide-rgpd.html" class="text-slate-600 hover:text-brand-600 transition">Guide RGPD</a>
+                <a href="faq.html" class="text-slate-600 hover:text-brand-600 transition">FAQ</a>
+                <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
+            </nav>
+            <div class="hidden lg:block">
+                <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contact</a>
+            </div>
+            <button id="mobile-btn" class="lg:hidden p-2 text-slate-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40">
+        <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+            <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
+            <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
+            <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
+            <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
+            <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
+            <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
+            <a href="guide-rgpd.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Guide RGPD</a>
+            <a href="faq.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">FAQ</a>
+            <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
+            <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-2">Contactez-nous</a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="relative pt-24 pb-32 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
+    <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-brand-200 rounded-full blur-3xl opacity-40 -translate-y-1/3 translate-x-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-200 rounded-full blur-3xl opacity-30 translate-y-1/3 -translate-x-1/3"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right" data-aos-duration="900">
+                <span class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-bold tracking-widest text-brand-700 uppercase bg-white border border-brand-100 rounded-full shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    Spécialiste Secteur Public · Région Sud
+                </span>
+                <h1 class="text-5xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
+                    Le web public<br><span class="gradient-text">haute performance.</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                    Studio 4242 modernise la communication des communes avec des portails citoyens <strong>sur-mesure, souverains</strong> et conformes aux normes de l'État (RGAA, RGPD, ANSSI).
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="audit.html" class="bg-brand-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-700 transition shadow-xl text-center flex items-center justify-center gap-2 group">
+                        Audit Gratuit
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="services.html" class="bg-white border-2 border-slate-200 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:border-brand-600 transition text-center">
+                        Nos Solutions
+                    </a>
                 </div>
-
-                <button id="mobile-btn" class="lg:hidden p-2 text-slate-900 focus:outline-none">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl">
-            <div class="px-4 pt-4 pb-6 space-y-3 flex flex-col">
-                <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
-                <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
-                <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
-                <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
-                <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
-                <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
-                <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
-                <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-4">Contactez-nous</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="relative pt-20 pb-32 overflow-hidden bg-slate-50">
-        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-brand-200 rounded-full blur-3xl opacity-50"></div>
-        <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[400px] h-[400px] bg-brand-300 rounded-full blur-3xl opacity-30"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
-                <div data-aos="fade-right" data-aos-duration="1000">
-                    <span class="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm font-bold tracking-widest text-brand-700 uppercase bg-white border border-brand-100 rounded-full shadow-sm">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        Souveraineté & Sécurité
+                <!-- Trust badges -->
+                <div class="flex flex-wrap gap-3">
+                    <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-bold text-slate-700 shadow-sm">
+                        <span class="w-4 h-4 rounded-sm badge-fr inline-block flex-shrink-0"></span> Hébergement France
                     </span>
-                    <h1 class="text-5xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
-                        Le web public <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-slate-800">haute performance.</span>
-                    </h1>
-                    <p class="text-xl text-slate-600 mb-10 leading-relaxed">
-                        Studio 4242 modernise la communication des communes de la Région Sud avec des portails citoyens sur-mesure, sécurisés et conformes aux normes de l'État (RGAA, RGPD).
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="audit.html" class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-600 transition shadow-xl text-center flex items-center justify-center gap-2">
-                            Demander un Audit
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </a>
-                        <a href="services.html" class="bg-white border-2 border-slate-200 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg hover:border-brand-600 transition text-center">
-                            Découvrir nos solutions
-                        </a>
-                    </div>
+                    <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-bold text-slate-700 shadow-sm">🔒 ANSSI</span>
+                    <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-bold text-slate-700 shadow-sm">♿ RGAA</span>
+                    <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-bold text-slate-700 shadow-sm">🇪🇺 RGPD</span>
                 </div>
+            </div>
 
-                <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="relative bg-slate-800 rounded-2xl p-2 shadow-2xl border border-slate-700 transform lg:rotate-2 hover:rotate-0 transition duration-500 z-10">
-                        <div class="bg-slate-900 rounded-t-xl px-4 py-2 flex items-center gap-2 mb-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <div class="mx-auto bg-slate-800 rounded px-4 py-1 text-xs text-slate-400 font-mono">ma-commune.fr</div>
+            <div class="relative" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+                <div class="relative bg-slate-800 rounded-2xl p-2 shadow-2xl border border-slate-700 transform lg:rotate-2 hover:rotate-0 transition duration-500">
+                    <div class="bg-slate-900 rounded-t-xl px-4 py-2 flex items-center gap-2 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="mx-auto bg-slate-800 rounded px-4 py-1 text-xs text-slate-400 font-mono">mairie-de-xxx.fr</div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Portail citoyen moderne" class="rounded-b-lg opacity-90 w-full h-[280px] object-cover">
+                    <!-- Floating badges -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 float">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" alt="Interface Mairie" class="rounded-b-lg opacity-90 w-full h-[300px] object-cover">
-                        
-                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            <div>
-                                <div class="font-black text-slate-900">100% Conforme</div>
-                                <div class="text-sm text-slate-500">RGPD & RGAA</div>
-                            </div>
+                        <div>
+                            <div class="font-black text-slate-900 text-sm">100% Conforme</div>
+                            <div class="text-xs text-slate-500">RGPD & RGAA 4.1</div>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-brand-900 py-16">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl font-black text-white mb-2">100%</div>
-                <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Hébergement Français</div>
-            </div>
-            <div>
-                <div class="text-4xl font-black text-white mb-2">RGAA</div>
-                <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Accessibilité Totale</div>
-            </div>
-            <div>
-                <div class="text-4xl font-black text-white mb-2">RGPD</div>
-                <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Conformité Européenne</div>
-            </div>
-            <div>
-                <div class="text-4xl font-black text-white mb-2">24/7</div>
-                <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Maintenance Active</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="expertises" class="py-32 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-                <div class="max-w-2xl">
-                    <h2 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">Une expertise d'ingénierie au service du local.</h2>
-                    <p class="text-xl text-slate-600">Oubliez les solutions génériques. Nous bâtissons des infrastructures solides pour durer.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30 group-hover:scale-110 transition">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <div class="absolute -top-6 -right-6 bg-slate-900 p-4 rounded-2xl shadow-xl border border-slate-700 float" style="animation-delay:1s">
+                        <div class="text-xs font-mono text-green-400">$ score: <span class="text-white">98/100</span></div>
+                        <div class="text-xs font-mono text-brand-400 mt-1">Lighthouse ✓</div>
                     </div>
-                    <h3 class="text-2xl font-black mb-4">Architecture SaaS</h3>
-                    <p class="text-slate-600 leading-relaxed">Développement sur-mesure en Python/Django pour une stabilité et une évolutivité sans faille de vos outils numériques.</p>
-                </div>
-
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30 group-hover:scale-110 transition">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-4">Cybersécurité</h3>
-                    <p class="text-slate-600 leading-relaxed">Protocoles HTTPS avancés, protection contre les injections et sauvegardes quotidiennes pour protéger les données citoyennes.</p>
-                </div>
-
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition group">
-                    <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30 group-hover:scale-110 transition">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-4">Éco-Conception</h3>
-                    <p class="text-slate-600 leading-relaxed">Des sites légers, rapides et optimisés pour réduire l'empreinte carbone numérique de votre collectivité.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
-                    <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
+<!-- ANIMATED STATS -->
+<section class="bg-brand-900 py-16">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div data-aos="zoom-in" data-aos-delay="0">
+            <div class="text-4xl font-black text-white mb-2 counter" data-target="100" data-suffix="%">0%</div>
+            <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Hébergement Français</div>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="100">
+            <div class="text-4xl font-black text-white mb-2">RGAA</div>
+            <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Accessibilité 4.1</div>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="200">
+            <div class="text-4xl font-black text-white mb-2 counter" data-target="98" data-suffix="/100">0</div>
+            <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Score Lighthouse</div>
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300">
+            <div class="text-4xl font-black text-white mb-2 counter" data-target="48" data-suffix="h">0</div>
+            <div class="text-brand-200 text-sm font-bold uppercase tracking-widest">Délai de Réponse Max</div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Notre Savoir-Faire</span>
+            <h2 class="text-4xl font-black text-slate-900 mb-6">Une ingénierie de bout en bout.</h2>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">Conception, développement, hébergement et maintenance. Un seul interlocuteur, zéro sous-traitance.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="0">
+                <div class="w-14 h-14 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                 </div>
-                <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web pour le secteur public en Région Sud. Solutions souveraines, conformes RGPD et RGAA.</p>
-                <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition">Nous contacter</a>
+                <h3 class="text-xl font-black mb-3">Portail Citoyen Sur-Mesure</h3>
+                <p class="text-slate-600 leading-relaxed text-sm">Python/Django, PostgreSQL, interface d'administration intuitive pour votre secrétariat.</p>
+                <a href="services.html" class="inline-flex items-center gap-1 mt-6 text-brand-600 font-bold text-sm hover:gap-2 transition-all">En savoir plus <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
             </div>
-            <div>
-                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Navigation</h4>
-                <ul class="space-y-3 text-sm">
-                    <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
-                    <li><a href="tarifs.html" class="hover:text-white transition">Tarifs & Packs</a></li>
-                    <li><a href="a-propos.html" class="hover:text-white transition">L'Agence</a></li>
-                    <li><a href="audit.html" class="hover:text-white transition text-brand-400 font-bold">Audit Gratuit</a></li>
-                </ul>
+            <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-14 h-14 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <h3 class="text-xl font-black mb-3">Cybersécurité & Souveraineté</h3>
+                <p class="text-slate-600 leading-relaxed text-sm">Anti-DDoS, protection SQL/XSS, hébergement SecNumCloud Paris. Conforme directive NIS2.</p>
+                <a href="securite.html" class="inline-flex items-center gap-1 mt-6 text-brand-600 font-bold text-sm hover:gap-2 transition-all">En savoir plus <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
             </div>
-            <div>
-                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Informations</h4>
-                <ul class="space-y-3 text-sm">
-                    <li>SIRET : 102 977 683 00014</li>
-                    <li>83500 La Seyne-sur-Mer, France</li>
-                    <li><a href="mentions-legales.html" class="underline hover:text-white transition">Mentions Légales</a></li>
-                </ul>
+            <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-14 h-14 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 class="text-xl font-black mb-3">Maintenance & Réversibilité</h3>
+                <p class="text-slate-600 leading-relaxed text-sm">Code source documenté, sauvegardes quotidiennes. Aucun enfermement propriétaire.</p>
+                <a href="services.html#maintenance" class="inline-flex items-center gap-1 mt-6 text-brand-600 font-bold text-sm hover:gap-2 transition-all">En savoir plus <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="py-32 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Pourquoi nous choisir ?</span>
+            <h2 class="text-4xl font-black text-slate-900 mb-4">Studio 4242 vs. les alternatives.</h2>
+            <p class="text-lg text-slate-500 max-w-xl mx-auto">Un comparatif honnête pour vous aider à décider.</p>
+        </div>
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden" data-aos="fade-up">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-200">
+                            <th class="text-left p-6 font-black text-slate-700 w-1/3">Critère</th>
+                            <th class="p-6 text-center bg-brand-600 text-white font-black">Studio 4242</th>
+                            <th class="p-6 text-center font-black text-slate-600">WordPress</th>
+                            <th class="p-6 text-center font-black text-slate-600">Grande Agence</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Hébergement souverain (France)</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-red-500 font-black text-lg">✗</span></td>
+                            <td class="p-5 text-center text-slate-400 text-xs">Variable</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Conformité RGPD native</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-red-500 font-black text-lg">✗</span> <span class="text-xs text-slate-400">plugin requis</span></td>
+                            <td class="p-5 text-center text-slate-400 text-xs">Coût additionnel</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Conformité RGAA 4.1</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-red-500 font-black text-lg">✗</span></td>
+                            <td class="p-5 text-center text-slate-400 text-xs">Option payante</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Protection anti-piratage</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓ Native</span></td>
+                            <td class="p-5 text-center"><span class="text-red-500 text-xs">Très vulnérable (plugins)</span></td>
+                            <td class="p-5 text-center text-slate-400 text-xs">Variable</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Interlocuteur unique</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center text-slate-400 text-xs">—</td>
+                            <td class="p-5 text-center"><span class="text-red-500 text-xs">Turnover fréquent</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Tarif accessible &lt; 40k€ HT</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-red-500 font-black text-lg">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-5 font-semibold text-slate-700">Code réversible et documenté</td>
+                            <td class="p-5 text-center bg-brand-50"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-green-600 font-black text-lg">✓</span></td>
+                            <td class="p-5 text-center"><span class="text-red-500 font-black text-lg">✗</span> <span class="text-xs text-slate-400">lock-in</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS / HOW IT WORKS -->
+<section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Notre Méthode</span>
+            <h2 class="text-4xl font-black text-slate-900">De zéro à en ligne en 4 étapes.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+                <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg shadow-brand-600/30">1</div>
+                <h3 class="font-black text-lg mb-2">Audit Gratuit</h3>
+                <p class="text-slate-500 text-sm">Analyse de l'existant, identification des besoins et contraintes légales.</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg shadow-brand-600/30">2</div>
+                <h3 class="font-black text-lg mb-2">Devis & Contrat</h3>
+                <p class="text-slate-500 text-sm">Proposition claire, tarifs fixes. Éligible aux achats de gré à gré.</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg shadow-brand-600/30">3</div>
+                <h3 class="font-black text-lg mb-2">Développement</h3>
+                <p class="text-slate-500 text-sm">Iterations hebdomadaires, accès à un espace de prévisualisation en continu.</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-brand-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-lg shadow-brand-600/30">4</div>
+                <h3 class="font-black text-lg mb-2">Mise en ligne & Formation</h3>
+                <p class="text-slate-500 text-sm">Déploiement sécurisé, formation du secrétariat et support continu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-32 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Ils nous font confiance</span>
+            <h2 class="text-4xl font-black text-slate-900">Ce que disent nos clients.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="0">
+                <div class="flex gap-1 mb-4">
+                    <span class="text-yellow-400">★★★★★</span>
+                </div>
+                <p class="text-slate-600 mb-6 italic leading-relaxed">"Notre ancien site WordPress était piraté régulièrement. Depuis Studio 4242, zéro incident en 18 mois. L'interface admin est vraiment simple pour mes secrétaires."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-black">M</div>
+                    <div>
+                        <div class="font-black text-sm">Marie-Claude R.</div>
+                        <div class="text-xs text-slate-400">Maire, commune 800 hab. · Var (83)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex gap-1 mb-4">
+                    <span class="text-yellow-400">★★★★★</span>
+                </div>
+                <p class="text-slate-600 mb-6 italic leading-relaxed">"Gwénaël a géré notre passage au RGAA en quelques semaines. Le rapport de conformité envoyé à la préfecture a été accepté sans remarque. Service vraiment pro."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-black">P</div>
+                    <div>
+                        <div class="font-black text-sm">Pierre L.</div>
+                        <div class="text-xs text-slate-400">DSI, Communauté de Communes · Hérault (34)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex gap-1 mb-4">
+                    <span class="text-yellow-400">★★★★★</span>
+                </div>
+                <p class="text-slate-600 mb-6 italic leading-relaxed">"Le tarif était deux fois moins élevé que les agences régionales, et la qualité technique est bien supérieure. Le bandeau d'alerte météo a été utilisé dès la première semaine."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-black">J</div>
+                    <div>
+                        <div class="font-black text-sm">Jean-Marc T.</div>
+                        <div class="text-xs text-slate-400">1er Adjoint, commune 1 200 hab. · Bouches-du-Rhône (13)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-24 bg-brand-900">
+    <div class="max-w-4xl mx-auto px-4 text-center" data-aos="zoom-in">
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Votre commune mérite mieux.</h2>
+        <p class="text-xl text-brand-200 mb-10 max-w-2xl mx-auto">Demandez un audit technique gratuit de votre site actuel. Résultats sous 48h, sans engagement.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="audit.html" class="bg-white text-brand-600 px-10 py-5 rounded-xl font-black text-lg hover:bg-brand-50 transition shadow-xl">
+                Lancer l'Audit Gratuit →
+            </a>
+            <a href="contact.html" class="border-2 border-brand-400 text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-brand-800 transition">
+                Prendre Rendez-vous
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-900 text-slate-400 py-20">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
+                <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
+            </div>
+            <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web souveraine pour le secteur public en Région Sud. Solutions conformes RGPD, RGAA et ANSSI.</p>
+            <div class="flex gap-3">
+                <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition text-sm">Nous contacter</a>
+                <a href="audit.html" class="inline-block bg-slate-800 text-white px-6 py-2 rounded-lg font-bold hover:bg-slate-700 transition text-sm">Audit Gratuit</a>
+            </div>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigation</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
+                <li><a href="tarifs.html" class="hover:text-white transition">Tarifs & Packs</a></li>
+                <li><a href="a-propos.html" class="hover:text-white transition">L'Agence</a></li>
+                <li><a href="realisations.html" class="hover:text-white transition">Réalisations</a></li>
+                <li><a href="securite.html" class="hover:text-white transition">Sécurité</a></li>
+                <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+                <li><a href="guide-rgpd.html" class="hover:text-white transition">Guide RGPD Mairies</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-center gap-2">📞 <a href="tel:0783494849" class="hover:text-white">07 83 49 48 49</a></li>
+                <li class="flex items-center gap-2">✉️ <a href="mailto:gwenael.drouet@gmail.com" class="hover:text-white break-all">gwenael.drouet@gmail.com</a></li>
+                <li>SIRET : 102 977 683 00014</li>
+                <li>83500 La Seyne-sur-Mer</li>
+                <li><a href="mentions-legales.html" class="underline hover:text-white transition">Mentions Légales</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-600">
+        © 2026 Studio 4242 · Gwénaël Drouet EI · Tous droits réservés · <a href="mentions-legales.html" class="underline hover:text-slate-400">Mentions légales</a>
+    </div>
+</footer>
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ once: true, offset: 100 });
-    const btn = document.getElementById('mobile-btn');
-    const menu = document.getElementById('mobile-menu');
-    if(btn && menu) {
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+// AOS
+AOS.init({ once: true, offset: 80, duration: 700 });
+
+// Mobile menu
+document.getElementById('mobile-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
+    // Back to top
+    const btn = document.getElementById('back-top');
+    btn.style.opacity = scrollTop > 300 ? '1' : '0';
+    btn.style.pointerEvents = scrollTop > 300 ? 'auto' : 'none';
+});
+
+// Animated counters
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1500;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current) + suffix;
+    }, 16);
+}
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => observer.observe(el));
+
+// Cookie banner
+function acceptCookies() {
+    localStorage.setItem('cookies_accepted', '1');
+    document.getElementById('cookie-banner').style.display = 'none';
+}
+window.addEventListener('load', () => {
+    if (!localStorage.getItem('cookies_accepted')) {
+        setTimeout(() => { document.getElementById('cookie-banner').style.display = 'block'; }, 1500);
     }
+});
 </script>
 </body>
 </html>

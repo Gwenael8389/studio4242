@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Questions fréquentes des Mairies | Studio 4242</title>
+    <meta name="description" content="Toutes les réponses aux questions que se posent les mairies et collectivités : marchés publics, RGPD, RGAA, sécurité, tarifs. Studio 4242.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 900: '#1e3a8a' } } } } }</script>
+    <style>
+        #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563eb,#60a5fa);z-index:9999;transition:width 0.1s}
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+        .faq-answer.open { max-height: 500px; }
+        .faq-icon { transition: transform 0.3s; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); }
+        /* Schema.org for FAQ */
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Peut-on acheter votre prestation sans appel d'offres ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui. L'article R2122-8 du Code de la Commande Publique autorise les achats de gré à gré sous 40 000 € HT. Nos trois offres (990 €, 1 990 € et sur devis) sont toutes en dessous de ce seuil." }
+        },
+        {
+          "@type": "Question",
+          "name": "Pourquoi votre site est-il plus sécurisé que WordPress ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WordPress représente 90% des CMS piratés. Ses 60 000 plugins sont autant de failles potentielles. Notre solution Python/Django n'utilise aucun plugin tiers, ce qui élimine la quasi-totalité des vecteurs d'attaque." }
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
+<div id="progress-bar" style="width:0%"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition:opacity 0.3s">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
+                <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
+            </a>
+            <nav class="hidden lg:flex space-x-7 text-xs font-bold uppercase tracking-widest items-center">
+                <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
+                <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
+                <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
+                <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
+                <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
+                <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
+                <a href="guide-rgpd.html" class="text-slate-600 hover:text-brand-600 transition">Guide RGPD</a>
+                <a href="faq.html" class="text-slate-600 hover:text-brand-600 transition">FAQ</a>
+                <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
+            </nav>
+            <div class="hidden lg:block">
+                <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contact</a>
+            </div>
+            <button id="mobile-btn" class="lg:hidden p-2 text-slate-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40">
+        <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+            <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
+            <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
+            <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
+            <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
+            <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
+            <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
+            <a href="guide-rgpd.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Guide RGPD</a>
+            <a href="faq.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">FAQ</a>
+            <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
+            <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-2">Contactez-nous</a>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow pt-20 pb-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Centre d'aide</span>
+            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Questions fréquentes</h1>
+            <p class="text-xl text-slate-600">Tout ce que les élus et services techniques veulent savoir avant de nous contacter.</p>
+        </div>
+
+        <!-- Search box -->
+        <div class="mb-12" data-aos="fade-up">
+            <input type="text" id="faq-search" placeholder="🔍 Rechercher une question…" oninput="filterFaq()" class="w-full px-6 py-4 rounded-2xl border-2 border-slate-200 focus:border-brand-600 outline-none text-lg transition bg-white shadow-sm">
+        </div>
+
+        <!-- Categories -->
+        <div class="flex flex-wrap gap-3 mb-8" data-aos="fade-up">
+            <button onclick="filterCategory('all')" class="cat-btn active px-4 py-2 rounded-full text-sm font-bold bg-brand-600 text-white transition">Toutes</button>
+            <button onclick="filterCategory('marche')" class="cat-btn px-4 py-2 rounded-full text-sm font-bold bg-white border border-slate-200 text-slate-600 hover:border-brand-600 transition">📋 Marchés Publics</button>
+            <button onclick="filterCategory('securite')" class="cat-btn px-4 py-2 rounded-full text-sm font-bold bg-white border border-slate-200 text-slate-600 hover:border-brand-600 transition">🔒 Sécurité</button>
+            <button onclick="filterCategory('rgpd')" class="cat-btn px-4 py-2 rounded-full text-sm font-bold bg-white border border-slate-200 text-slate-600 hover:border-brand-600 transition">🇪🇺 RGPD & RGAA</button>
+            <button onclick="filterCategory('technique')" class="cat-btn px-4 py-2 rounded-full text-sm font-bold bg-white border border-slate-200 text-slate-600 hover:border-brand-600 transition">⚙️ Technique</button>
+            <button onclick="filterCategory('tarif')" class="cat-btn px-4 py-2 rounded-full text-sm font-bold bg-white border border-slate-200 text-slate-600 hover:border-brand-600 transition">💶 Tarifs</button>
+        </div>
+
+        <!-- FAQ items -->
+        <div id="faq-list" class="space-y-4">
+
+            <!-- Marchés publics -->
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="marche" data-aos="fade-up" id="marche-public">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Peut-on acheter votre prestation sans appel d'offres ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3"><strong>Oui, dans la très grande majorité des cas.</strong> L'article <strong>R2122-8 du Code de la Commande Publique</strong> autorise les collectivités à passer des marchés de gré à gré (sans procédure formalisée) pour tout achat inférieur à <strong>40 000 € HT</strong>.</p>
+                        <p class="mb-3">Nos trois offres (990 €, 1 990 € et sur devis) sont toutes largement en dessous de ce seuil. La procédure est simple : vous nous demandez un devis, vous le validez en conseil municipal si nécessaire, et vous signez un bon de commande.</p>
+                        <div class="bg-brand-50 border border-brand-200 rounded-xl p-4 mt-4">
+                            <strong class="text-brand-700">📌 Conseil pratique :</strong> <span class="text-brand-600">Mentionnez dans votre délibération la référence à l'article R2122-8 CCP. Nous vous fournissons un modèle de délibération à la demande.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="marche" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Fournissez-vous un devis conforme à la commande publique ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p>Oui. Nous fournissons un <strong>devis au format professionnel</strong> incluant SIRET, coordonnées complètes, détail des prestations, prix HT/TTC, délais et conditions de paiement. Ce devis peut servir de pièce justificative pour votre dossier de commande publique.</p>
+                        <p class="mt-2">À votre demande, nous rédigeons également un <strong>cahier des clauses techniques particulières (CCTP)</strong> simplifié si votre service comptable en a besoin.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sécurité -->
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="securite" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Pourquoi votre solution est-elle plus sécurisée que WordPress ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3">WordPress représente <strong>43% du web mondial</strong> et <strong>90% des CMS piratés</strong>. La raison : ses 60 000 plugins tiers, souvent mal maintenus, constituent autant de portes d'entrée pour les hackers. Un plugin non mis à jour pendant 6 mois peut exposer votre commune à une compromission totale.</p>
+                        <p>Notre solution Python/Django est un code <strong>100% propriétaire</strong>, sans dépendance tierce critique. Les protections contre les injections SQL, les failles XSS et les attaques CSRF sont natives dans le framework, pas dans des plugins ajoutés a posteriori.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="securite" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Que se passe-t-il en cas de cyberattaque ou panne ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3">Nous disposons d'un <strong>Plan de Reprise d'Activité (PRA)</strong> qui garantit une restauration en moins de 4 heures. Voici le processus :</p>
+                        <ol class="list-decimal pl-5 space-y-1">
+                            <li>Détection automatique de l'incident (monitoring 24/7)</li>
+                            <li>Notification immédiate par SMS/email</li>
+                            <li>Activation du backup de la veille (rétention 30 jours)</li>
+                            <li>Déploiement en environnement de secours</li>
+                            <li>Rapport d'incident transmis à la CNIL si données personnelles impactées</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RGPD -->
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="rgpd" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Notre site doit-il obligatoirement être accessible (RGAA) ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3"><strong>Oui, c'est une obligation légale.</strong> La loi du 28 mai 2019 (transposant la directive européenne 2016/2102) impose à <strong>toutes les communes françaises</strong> de rendre leurs sites web accessibles aux personnes handicapées, conformément au Référentiel Général d'Amélioration de l'Accessibilité (RGAA 4.1).</p>
+                        <p class="mb-3">Les sanctions en cas de non-conformité incluent une <strong>amende de 25 000 €</strong> par manquement constaté. La DINUM (Direction Interministérielle du Numérique) réalise des contrôles réguliers.</p>
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                            <strong class="text-green-700">✅ Studio 4242 :</strong> <span class="text-green-600">Chaque site que nous livrons est accompagné d'une déclaration d'accessibilité et d'un rapport de conformité RGAA 4.1.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="rgpd" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Vous occupez-vous de la conformité RGPD ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3">Oui, c'est intégré dans chaque prestation. Concrètement, cela comprend :</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Bandeau de consentement cookies conforme (refus aussi simple qu'accepter)</li>
+                            <li>Aucun outil de tracking américain (Matomo auto-hébergé remplace Google Analytics)</li>
+                            <li>Rédaction des mentions légales et politique de confidentialité</li>
+                            <li>Formulaires avec mention d'information RGPD obligatoire</li>
+                            <li>Chiffrement des données en transit (HTTPS) et au repos</li>
+                        </ul>
+                        <p class="mt-3">Nous travaillons en coordination avec le DPO (Délégué à la Protection des Données) de votre commune s'il existe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technique -->
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="technique" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Nos secrétaires pourront-ils gérer le site sans connaissances techniques ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3">Absolument. L'interface d'administration est conçue spécifiquement pour des utilisateurs non-techniques. Les principales actions (publier une actualité, ajouter un document, modifier les horaires) se font en quelques clics, sans écrire une seule ligne de code.</p>
+                        <p>Chaque livraison inclut une <strong>formation visio d'1h</strong> pour le(s) secrétaire(s) concerné(s), ainsi qu'un guide utilisateur PDF personnalisé.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="technique" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Que se passe-t-il si Studio 4242 ferme ou si vous partez en retraite ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3">C'est une question légitime que nous prenons très au sérieux. Notre principe de <strong>réversibilité totale</strong> garantit que vous n'êtes jamais otage de notre structure :</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Le <strong>code source complet est livré</strong> avec chaque projet (pas de "boîte noire")</li>
+                            <li>Technologies standard (Python/Django) : n'importe quelle agence peut reprendre le projet en 24h</li>
+                            <li>Documentation technique complète fournie</li>
+                            <li>Hébergement sur infrastructure standard (Scalingo) : transférable immédiatement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="technique" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Reprenez-vous un site existant ou faut-il repartir de zéro ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p>Les deux options sont possibles. Si votre site existant est sur un CMS standard (WordPress, Joomla, Drupal), nous pouvons <strong>migrer tout le contenu</strong> (articles, images, documents) vers notre nouvelle architecture. Vous ne perdez aucune donnée et conservez votre nom de domaine actuel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarifs -->
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="tarif" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Pourquoi n'appliquez-vous pas la TVA ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p>En tant qu'Entrepreneur Individuel sous le régime de la micro-entreprise, Studio 4242 bénéficie de la <strong>franchise de TVA en base</strong> prévue à l'article 293B du Code Général des Impôts (CGI). Le montant affiché est le montant net à payer — aucune TVA ne sera ajoutée sur vos factures.</p>
+                        <p class="mt-2">Pour votre commune, cela se traduit par un <strong>coût direct inférieur</strong> par rapport aux agences assujetties à la TVA.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm" data-category="tarif" data-aos="fade-up">
+                <button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                    <span class="font-black text-slate-900 pr-4">Y a-t-il des coûts cachés ou des frais récurrents ?</span>
+                    <svg class="faq-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="faq-answer px-6">
+                    <div class="pb-6 text-slate-600 leading-relaxed text-sm">
+                        <p class="mb-3">Aucun coût caché. Le tarif affiché inclut la <strong>première année d'hébergement</strong>. À partir de la deuxième année, l'hébergement seul coûte environ <strong>15 €/mois</strong> si vous optez pour le plan "Autonomie" (sans maintenance).</p>
+                        <p>Les plans de maintenance (39 €/mois ou 79 €/mois) sont des abonnements mensuels résiliables à tout moment, sans engagement ni pénalité.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No results message -->
+        <div id="no-results" class="hidden text-center py-16">
+            <p class="text-2xl mb-2">🤷</p>
+            <p class="text-slate-500">Aucune question ne correspond à votre recherche.</p>
+            <a href="contact.html" class="inline-block mt-4 bg-brand-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-700 transition">Posez-nous directement la question →</a>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-20 bg-brand-50 border border-brand-200 rounded-3xl p-10 text-center" data-aos="fade-up">
+            <h2 class="text-2xl font-black text-slate-900 mb-3">Vous n'avez pas trouvé votre réponse ?</h2>
+            <p class="text-slate-600 mb-6">Notre ingénieur répond personnellement à toutes les questions en moins de 24h.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-brand-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-700 transition shadow-lg">Nous écrire</a>
+                <a href="tel:0783494849" class="bg-white border-2 border-slate-200 text-slate-900 px-8 py-4 rounded-xl font-bold hover:border-brand-600 transition">📞 07 83 49 48 49</a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
+                <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
+            </div>
+            <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web souveraine pour le secteur public. Conformes RGPD, RGAA, ANSSI.</p>
+            <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition text-sm">Nous contacter</a>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigation</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
+                <li><a href="tarifs.html" class="hover:text-white transition">Tarifs & Packs</a></li>
+                <li><a href="securite.html" class="hover:text-white transition">Sécurité</a></li>
+                <li><a href="guide-rgpd.html" class="hover:text-white transition">Guide RGPD</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+            <ul class="space-y-3 text-sm">
+                <li>📞 <a href="tel:0783494849" class="hover:text-white">07 83 49 48 49</a></li>
+                <li>SIRET : 102 977 683 00014</li>
+                <li>83500 La Seyne-sur-Mer</li>
+                <li><a href="mentions-legales.html" class="underline hover:text-white">Mentions Légales</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ once: true, offset: 80, duration: 700 });
+document.getElementById('mobile-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progress-bar').style.width = (s/h*100)+'%';
+    const btn = document.getElementById('back-top');
+    btn.style.opacity = s > 300 ? '1' : '0';
+    btn.style.pointerEvents = s > 300 ? 'auto' : 'none';
+});
+
+function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer').classList.remove('open');
+    });
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.classList.add('open');
+    }
+}
+
+function filterCategory(cat) {
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = btn.className.replace('bg-brand-600 text-white', 'bg-white text-slate-600');
+    });
+    event.target.className = event.target.className.replace('bg-white text-slate-600', 'bg-brand-600 text-white');
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.style.display = (cat === 'all' || item.dataset.category === cat) ? 'block' : 'none';
+    });
+    checkNoResults();
+}
+
+function filterFaq() {
+    const q = document.getElementById('faq-search').value.toLowerCase();
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+    });
+    checkNoResults();
+}
+
+function checkNoResults() {
+    const visible = [...document.querySelectorAll('.faq-item')].filter(el => el.style.display !== 'none');
+    document.getElementById('no-results').style.display = visible.length === 0 ? 'block' : 'none';
+}
+</script>
+</body>
+</html>

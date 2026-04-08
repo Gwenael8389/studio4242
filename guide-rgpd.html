@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide RGPD pour Mairies | Obligations & Conformité 2026 | Studio 4242</title>
+    <meta name="description" content="Guide pratique RGPD pour les collectivités locales : obligations légales, DPO, cookies, sanctions. Ressource gratuite de Studio 4242.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 900: '#1e3a8a' } } } } }</script>
+    <style>
+        #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563eb,#60a5fa);z-index:9999;transition:width 0.1s}
+        .toc-link { transition: color 0.2s, padding-left 0.2s; }
+        .toc-link.active { color: #2563eb; padding-left: 0.5rem; font-weight: 700; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
+<div id="progress-bar" style="width:0%"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition:opacity 0.3s">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
+                <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
+            </a>
+            <nav class="hidden lg:flex space-x-7 text-xs font-bold uppercase tracking-widest items-center">
+                <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
+                <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
+                <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
+                <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
+                <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
+                <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
+                <a href="guide-rgpd.html" class="text-slate-600 hover:text-brand-600 transition">Guide RGPD</a>
+                <a href="faq.html" class="text-slate-600 hover:text-brand-600 transition">FAQ</a>
+                <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
+            </nav>
+            <div class="hidden lg:block">
+                <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contact</a>
+            </div>
+            <button id="mobile-btn" class="lg:hidden p-2 text-slate-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40">
+        <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+            <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
+            <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
+            <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
+            <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
+            <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
+            <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
+            <a href="guide-rgpd.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Guide RGPD</a>
+            <a href="faq.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">FAQ</a>
+            <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
+            <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-2">Contactez-nous</a>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow pt-20 pb-32">
+    <!-- Hero -->
+    <div class="bg-gradient-to-br from-brand-900 to-slate-900 text-white py-20 mb-16">
+        <div class="max-w-4xl mx-auto px-4 text-center" data-aos="fade-up">
+            <span class="inline-block bg-brand-600 text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">Ressource Gratuite · Mis à jour 2026</span>
+            <h1 class="text-4xl md:text-5xl font-black mb-6">Guide RGPD pour les Mairies<br>& Collectivités Locales</h1>
+            <p class="text-xl text-blue-200 max-w-2xl mx-auto">Toutes vos obligations légales en matière de protection des données, expliquées simplement par un ingénieur spécialiste du secteur public.</p>
+            <div class="flex flex-wrap gap-4 justify-center mt-8">
+                <span class="bg-white/10 px-4 py-2 rounded-full text-sm font-bold">⏱ 8 min de lecture</span>
+                <span class="bg-white/10 px-4 py-2 rounded-full text-sm font-bold">🎯 Niveau : Élu & Agent</span>
+                <span class="bg-white/10 px-4 py-2 rounded-full text-sm font-bold">📅 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+            <!-- Sidebar TOC (sticky) -->
+            <aside class="hidden lg:block">
+                <div class="sticky top-28 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <h3 class="font-black text-sm uppercase tracking-widest text-slate-500 mb-4">Sommaire</h3>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#intro" class="toc-link block text-slate-600 hover:text-brand-600">1. C'est quoi le RGPD ?</a>
+                        <a href="#obligations" class="toc-link block text-slate-600 hover:text-brand-600">2. Obligations des communes</a>
+                        <a href="#dpo" class="toc-link block text-slate-600 hover:text-brand-600">3. Le DPO : obligatoire ?</a>
+                        <a href="#cookies" class="toc-link block text-slate-600 hover:text-brand-600">4. Cookies & consentement</a>
+                        <a href="#hebergement" class="toc-link block text-slate-600 hover:text-brand-600">5. Hébergement des données</a>
+                        <a href="#sanctions" class="toc-link block text-slate-600 hover:text-brand-600">6. Sanctions & contrôles</a>
+                        <a href="#checklist" class="toc-link block text-slate-600 hover:text-brand-600">7. Checklist 2026</a>
+                    </nav>
+                    <div class="mt-6 pt-6 border-t border-slate-100">
+                        <a href="audit.html" class="block w-full bg-brand-600 text-white text-center py-3 rounded-xl font-bold text-sm hover:bg-brand-700 transition">Audit Gratuit →</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main content -->
+            <div class="lg:col-span-3 space-y-16">
+
+                <section id="intro" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-black text-lg">1</div>
+                        <h2 class="text-2xl font-black text-slate-900">C'est quoi le RGPD pour une mairie ?</h2>
+                    </div>
+                    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-4">
+                        <p>Le <strong>Règlement Général sur la Protection des Données (RGPD)</strong>, en vigueur depuis mai 2018, s'applique à <em>toutes</em> les organisations qui traitent des données personnelles de citoyens européens — y compris les communes, intercommunalités et établissements publics.</p>
+                        <p>Une mairie collecte et traite des données personnelles en permanence : état civil, liste électorale, inscriptions scolaires, demandes d'urbanisme, vidéosurveillance, formulaires en ligne… Toutes ces données sont soumises au RGPD.</p>
+                        <div class="bg-blue-50 border-l-4 border-brand-600 p-4 rounded-r-xl">
+                            <strong class="text-brand-700">À retenir :</strong> En tant que collectivité, vous êtes <strong>responsable de traitement</strong>. Vous devez garantir la sécurité et la confidentialité des données de vos administrés.
+                        </div>
+                    </div>
+                </section>
+
+                <section id="obligations" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-black text-lg">2</div>
+                        <h2 class="text-2xl font-black text-slate-900">Les 5 obligations principales des communes</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h3 class="font-black text-lg mb-2 flex items-center gap-2">📝 Tenir un registre des activités de traitement</h3>
+                            <p class="text-slate-600 text-sm">Obligation légale (art. 30 RGPD) : lister tous les traitements de données (quel type de données, dans quel but, qui y accède, combien de temps les données sont conservées).</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h3 class="font-black text-lg mb-2 flex items-center gap-2">🍪 Informer et obtenir le consentement pour les cookies</h3>
+                            <p class="text-slate-600 text-sm">Tout cookie non strictement nécessaire (analytics, réseaux sociaux) doit être accepté explicitement par l'utilisateur. Le refus doit être aussi simple que l'acceptation.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h3 class="font-black text-lg mb-2 flex items-center gap-2">🔒 Sécuriser les données</h3>
+                            <p class="text-slate-600 text-sm">Chiffrement, contrôle d'accès, sauvegardes, protection contre les intrusions. En cas de violation de données, vous devez notifier la CNIL dans les 72 heures.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h3 class="font-black text-lg mb-2 flex items-center gap-2">📋 Publier les mentions légales</h3>
+                            <p class="text-slate-600 text-sm">Votre site web doit mentionner : le responsable de traitement, le DPO, les données collectées, leur durée de conservation, et les droits des utilisateurs (accès, rectification, suppression).</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h3 class="font-black text-lg mb-2 flex items-center gap-2">🏢 Choisir des sous-traitants conformes</h3>
+                            <p class="text-slate-600 text-sm">Si vous hébergez des données sur des serveurs tiers (votre hébergeur web), il doit être conforme RGPD. L'utilisation de serveurs américains (Google Cloud, AWS) pour des données publiques est problématique au regard du Cloud Act.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="dpo" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-black text-lg">3</div>
+                        <h2 class="text-2xl font-black text-slate-900">Le DPO : obligatoire pour votre commune ?</h2>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                        <p class="text-slate-600 mb-4">Oui. L'article 37 du RGPD impose la désignation d'un <strong>Délégué à la Protection des Données (DPO)</strong> pour <strong>toutes les autorités et organismes publics</strong>, quelle que soit leur taille.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+                                <h4 class="font-black text-green-700 mb-2">Options possibles</h4>
+                                <ul class="text-sm text-green-600 space-y-1">
+                                    <li>✓ Agent interne formé</li>
+                                    <li>✓ DPO mutualisé (EPCI, syndicat)</li>
+                                    <li>✓ DPO externe prestataire</li>
+                                    <li>✓ Service proposé par certains CDG</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+                                <h4 class="font-black text-yellow-700 mb-2">Obligations du DPO</h4>
+                                <ul class="text-sm text-yellow-600 space-y-1">
+                                    <li>→ Tenir le registre des traitements</li>
+                                    <li>→ Former les agents</li>
+                                    <li>→ Interlocuteur CNIL</li>
+                                    <li>→ Gérer les demandes d'exercice de droits</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cookies" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-black text-lg">4</div>
+                        <h2 class="text-2xl font-black text-slate-900">Cookies : ce que la loi exige vraiment</h2>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                        <p class="text-slate-600 mb-6">La CNIL a renforcé ses lignes directrices en 2022. Voici ce qu'un bandeau cookies doit respecter :</p>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 p-3 bg-green-50 rounded-xl">
+                                <span class="text-green-600 font-black">✓</span>
+                                <span class="text-sm text-slate-600">Le bouton "Refuser tout" doit être <strong>aussi visible et accessible</strong> que "Accepter tout"</span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-green-50 rounded-xl">
+                                <span class="text-green-600 font-black">✓</span>
+                                <span class="text-sm text-slate-600">Fermer la bannière sans faire de choix <strong>ne vaut pas consentement</strong></span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-green-50 rounded-xl">
+                                <span class="text-green-600 font-black">✓</span>
+                                <span class="text-sm text-slate-600">Il doit être possible de <strong>retirer son consentement</strong> à tout moment</span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-red-50 rounded-xl">
+                                <span class="text-red-600 font-black">✗</span>
+                                <span class="text-sm text-slate-600">Google Analytics sans consentement est <strong>illégal</strong> en France (décisions CNIL 2022)</span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 bg-red-50 rounded-xl">
+                                <span class="text-red-600 font-black">✗</span>
+                                <span class="text-sm text-slate-600">Les boutons partagés Facebook/Twitter <strong>déposent des cookies tiers</strong> sans consentement</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="hebergement" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center font-black text-lg">5</div>
+                        <h2 class="text-2xl font-black text-slate-900">Hébergement : pourquoi les serveurs américains posent problème</h2>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                        <p class="text-slate-600 mb-4">Le <strong>Cloud Act américain</strong> (2018) oblige les entreprises américaines (Google, Microsoft, Amazon) à communiquer les données hébergées sur leurs serveurs aux autorités américaines sur simple demande administrative, sans autorisation judiciaire et sans en informer les personnes concernées.</p>
+                        <p class="text-slate-600 mb-4">La CJUE (arrêt Schrems II, 2020) a annulé le Privacy Shield, invalidant les transferts de données personnelles vers les USA sans garanties supplémentaires. Héberger des données de citoyens français sur AWS ou Google Cloud vous expose donc à des risques de non-conformité RGPD.</p>
+                        <div class="bg-brand-50 border border-brand-200 rounded-xl p-4 mt-4">
+                            <strong class="text-brand-700">Solution Studio 4242 :</strong> <span class="text-brand-600">Hébergement exclusif sur Scalingo (datacenter Paris), certifié SecNumCloud (qualification ANSSI) et ISO 27001. Aucune donnée ne quitte le territoire européen.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="sanctions" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-black text-lg">6</div>
+                        <h2 class="text-2xl font-black text-slate-900">Sanctions : les risques réels pour votre commune</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-red-50 border border-red-200 rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-black text-red-600 mb-2">20 M€</div>
+                            <p class="text-sm text-red-700">Amende maximale RGPD (4% du chiffre d'affaires annuel mondial pour les entreprises)</p>
+                        </div>
+                        <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-black text-orange-600 mb-2">25 k€</div>
+                            <p class="text-sm text-orange-700">Amende pour non-conformité RGAA (inaccessibilité du site web d'une collectivité)</p>
+                        </div>
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 text-center">
+                            <div class="text-3xl font-black text-yellow-600 mb-2">72h</div>
+                            <p class="text-sm text-yellow-700">Délai pour notifier la CNIL en cas de violation de données personnelles</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-500 text-sm mt-4">La CNIL réalise des contrôles réguliers sur les collectivités locales depuis 2023. Les sanctions sont publiées publiquement, ce qui peut nuire à l'image de la commune.</p>
+                </section>
+
+                <section id="checklist" data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-green-100 text-green-600 rounded-xl flex items-center justify-center font-black text-lg">7</div>
+                        <h2 class="text-2xl font-black text-slate-900">Checklist RGPD 2026 pour votre mairie</h2>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-8">
+                        <div class="space-y-3" id="rgpd-checklist">
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">DPO désigné et déclaré à la CNIL</strong><p class="text-xs text-slate-500">Via le portail notifications CNIL</p></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Registre des activités de traitement tenu à jour</strong><p class="text-xs text-slate-500">Liste tous les traitements de données personnelles</p></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Site web hébergé en France ou UE</strong><p class="text-xs text-slate-500">Pas de serveurs soumis au Cloud Act US</p></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Bandeau cookies conforme (refus aussi simple qu'accepter)</strong></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Aucun outil de tracking américain non consenti</strong><p class="text-xs text-slate-500">Google Analytics remplacé par Matomo ou équivalent</p></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Mentions légales et politique de confidentialité publiées</strong></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Déclaration d'accessibilité RGAA publiée</strong><p class="text-xs text-slate-500">Page dédiée sur votre site, mise à jour annuellement</p></div>
+                            </label>
+                            <label class="flex items-start gap-4 p-3 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="checkbox" class="mt-1 w-5 h-5 accent-blue-600 flex-shrink-0">
+                                <div><strong class="text-sm">Procédure de notification CNIL en cas de violation</strong><p class="text-xs text-slate-500">Document interne, qui fait quoi dans les 72h</p></div>
+                            </label>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-100 text-center">
+                            <p class="text-slate-500 text-sm mb-4">Certains points ne sont pas cochés ? Nous pouvons vous aider à les traiter.</p>
+                            <a href="audit.html" class="inline-block bg-brand-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-700 transition shadow-lg">Demander l'Audit Gratuit →</a>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
+                <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
+            </div>
+            <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web souveraine pour le secteur public. Conformes RGPD, RGAA, ANSSI.</p>
+            <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition text-sm">Nous contacter</a>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Ressources</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="securite.html" class="hover:text-white transition">Sécurité Web</a></li>
+                <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+                <li><a href="guide-rgpd.html" class="text-brand-400 font-bold">Guide RGPD ←</a></li>
+                <li><a href="audit.html" class="hover:text-white transition">Audit Gratuit</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+            <ul class="space-y-3 text-sm">
+                <li>📞 <a href="tel:0783494849" class="hover:text-white">07 83 49 48 49</a></li>
+                <li>SIRET : 102 977 683 00014</li>
+                <li>83500 La Seyne-sur-Mer</li>
+                <li><a href="mentions-legales.html" class="underline hover:text-white">Mentions Légales</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ once: true, offset: 80, duration: 700 });
+document.getElementById('mobile-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progress-bar').style.width = (s/h*100)+'%';
+    const btn = document.getElementById('back-top');
+    btn.style.opacity = s > 300 ? '1' : '0';
+    btn.style.pointerEvents = s > 300 ? 'auto' : 'none';
+});
+</script>
+</body>
+</html>

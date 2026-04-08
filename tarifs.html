@@ -4,193 +4,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarifs & Marchés Publics | Studio 4242</title>
+    <meta name="description" content="Tarifs transparents pour la création de sites web de mairies et collectivités. Éligible gré à gré < 40 000€ HT. Studio 4242.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script>tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 900: '#1e3a8a', } } } } }</script>
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 600: '#2563eb', 900: '#1e3a8a' } } } } }</script>
+    <style>
+        #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563eb,#60a5fa);z-index:9999;transition:width 0.1s}
+        input[type=range] { accent-color: #2563eb; }
+    </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
-    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
-                    <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
-                </a>
-                
-                <nav class="hidden lg:flex space-x-8 text-sm font-bold uppercase tracking-widest items-center">
-                    <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
-                    <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
-                    <a href="tarifs.html" class="text-brand-600 border-b-2 border-brand-600 transition">Tarifs</a>
-                    <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
-                    <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
-                    <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
-                    <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
-                </nav>
+<div id="progress-bar" style="width:0%"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition:opacity 0.3s">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
+</button>
 
-                <div class="hidden lg:block">
-                    <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl">Contact</a>
-                </div>
-
-                <button id="mobile-btn" class="lg:hidden p-2 text-slate-900 focus:outline-none">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
+<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
+                <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
+            </a>
+            <nav class="hidden lg:flex space-x-7 text-xs font-bold uppercase tracking-widest items-center">
+                <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
+                <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
+                <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
+                <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
+                <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
+                <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
+                <a href="guide-rgpd.html" class="text-slate-600 hover:text-brand-600 transition">Guide RGPD</a>
+                <a href="faq.html" class="text-slate-600 hover:text-brand-600 transition">FAQ</a>
+                <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
+            </nav>
+            <div class="hidden lg:block">
+                <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contact</a>
             </div>
+            <button id="mobile-btn" class="lg:hidden p-2 text-slate-900">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40">
+        <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+            <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
+            <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
+            <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
+            <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
+            <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
+            <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
+            <a href="guide-rgpd.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Guide RGPD</a>
+            <a href="faq.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">FAQ</a>
+            <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
+            <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-2">Contactez-nous</a>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow pt-20 pb-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Grille Tarifaire 2026</span>
+            <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Des offres transparentes,<br>adaptées aux petites communes.</h1>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">Tarifs fixes, sans surprise. Toutes les prestations sont éligibles aux <strong>achats de gré à gré (&lt; 40 000 € HT)</strong> selon l'article R2122-8 du Code de la Commande Publique.</p>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl">
-            <div class="px-4 pt-4 pb-6 space-y-3 flex flex-col">
-                <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
-                <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
-                <a href="tarifs.html" class="text-brand-600 font-bold text-lg p-2 bg-brand-50 rounded-lg">Tarifs</a>
-                <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
-                <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
-                <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
-                <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
-                <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-4">Contactez-nous</a>
-            </div>
-        </div>
-    </header>
-    <main class="flex-grow pt-20 pb-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Grille Tarifaire 2026</span>
-                <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Des offres transparentes,<br>adaptées aux petites communes.</h1>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto">En tant que structure agile, nous proposons des tarifs très compétitifs tout en garantissant une qualité d'ingénierie supérieure. Prestations éligibles aux achats de gré à gré (< 40 000 € HT).</p>
-            </div>
+        <!-- Pricing cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24">
-                
-                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Pack Essentiel</h3>
-                    <p class="text-slate-500 mb-6 h-16">Idéal pour les communes de moins de 500 habitants voulant une première présence moderne.</p>
-                    <div class="mb-8 border-b border-slate-100 pb-6">
-                        <div class="text-4xl font-black text-brand-600">990 €</div>
-                        <div class="text-sm text-slate-400 mt-1 mb-4">Net à payer (TVA non applicable)</div>
-                        <div class="inline-flex items-center gap-2 bg-slate-100 text-slate-700 text-xs font-bold px-3 py-1.5 rounded-full">
-                            <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Délai estimé : 3 à 4 semaines
-                        </div>
+            <!-- Pack Essentiel -->
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200 flex flex-col hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="0">
+                <div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Pack</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-2">Essentiel</h3>
+                <p class="text-slate-500 mb-6 text-sm h-12">Pour les communes de moins de 500 habitants.</p>
+                <div class="mb-6 border-b border-slate-100 pb-6">
+                    <div class="text-5xl font-black text-brand-600">990 €</div>
+                    <div class="text-xs text-slate-400 mt-1">Net · TVA non applicable art. 293B CGI</div>
+                    <div class="mt-3 inline-flex items-center gap-2 bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-full">
+                        ⏱ 3–4 semaines
                     </div>
-                    <ul class="space-y-4 mb-8 flex-grow text-sm text-slate-700">
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> <strong>Design 100% Mobile & PC</strong></li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Jusqu'à 10 pages de présentation (Mairie, Histoire, Démarches...)</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Fil d'actualités simple</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Formulaire de contact sécurisé</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Conformité légale (RGPD, Cookies)</li>
-                    </ul>
-                    <a href="contact.html" class="block w-full text-center border-2 border-brand-600 text-brand-600 py-3 rounded-xl font-bold hover:bg-brand-50 transition">Demander un devis</a>
                 </div>
-
-                <div class="bg-slate-900 p-8 md:p-10 rounded-3xl shadow-2xl border-2 border-brand-600 flex flex-col relative transform lg:-translate-y-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg">Recommandé</div>
-                    <h3 class="text-2xl font-bold text-white mb-2 mt-4">Portail Citoyen</h3>
-                    <p class="text-slate-400 mb-6 h-16">Pour les communes de 500 à 2000+ habitants cherchant un outil complet et interactif.</p>
-                    <div class="mb-8 border-b border-slate-700 pb-6">
-                        <div class="text-4xl font-black text-white">1 990 €</div>
-                        <div class="text-sm text-slate-400 mt-1 mb-4">Net à payer (TVA non applicable)</div>
-                        <div class="inline-flex items-center gap-2 bg-brand-900 text-brand-100 text-xs font-bold px-3 py-1.5 rounded-full border border-brand-700">
-                            <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Délai estimé : 6 à 8 semaines
-                        </div>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-grow text-sm text-slate-300">
-                        <li class="flex gap-3 items-start"><span class="text-brand-400">✓</span> <strong>Tout le Pack Essentiel +</strong></li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-400">✓</span> <strong>Bandeau d'Alerte Population</strong> (Urgence, Météo, Route)</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-400">✓</span> Annuaire interactif (associations et commerces)</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-400">✓</span> Espace téléchargement (CR de Conseil Municipal, Bulletins...)</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-400">✓</span> Formation vidéo ou visio (1h) pour le secrétariat</li>
-                    </ul>
-                    <a href="contact.html" class="block w-full text-center bg-brand-600 text-white py-3 rounded-xl font-bold hover:bg-brand-500 transition shadow-lg">Demander un devis</a>
-                </div>
-
-                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200 flex flex-col" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Hébergement & Suivi</h3>
-                    <p class="text-slate-500 mb-6 h-16">Un abonnement mensuel obligatoire pour garantir la sécurité et la mise en ligne du site.</p>
-                    <div class="mb-8 border-b border-slate-100 pb-6">
-                        <div class="text-4xl font-black text-brand-600">49 € <span class="text-lg font-bold text-slate-400">/ mois</span></div>
-                        <div class="text-sm text-slate-400 mt-1 mb-4">Sans engagement de durée</div>
-                        <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full border border-green-100">
-                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> Intervention sous 24h
-                        </div>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-grow text-sm text-slate-700">
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Hébergement Souverain (Serveurs en France)</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Nom de domaine inclus (.fr ou .com)</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Certificat HTTPS / Cadenas de sécurité</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Mises à jour de sécurité de l'infrastructure</li>
-                        <li class="flex gap-3 items-start"><span class="text-brand-600">✓</span> Sauvegardes hebdomadaires automatiques</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Pourquoi vos tarifs sont-ils si compétitifs ?</h4>
-                    <p class="text-slate-600">Contrairement aux grosses agences de communication, Studio 4242 est une structure à taille humaine pilotée par un ingénieur indépendant. Vous ne payez pas de frais de locaux ou de commerciaux : vous payez uniquement pour le développement technique et le conseil direct.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Que se passe-t-il si vous arrêtez votre activité ? Sommes-nous bloqués ?</h4>
-                    <p class="text-slate-600">Absolument pas, et c'est notre engagement de <strong>réversibilité</strong>. Contrairement à des outils fermés, nous utilisons Python et Django (des standards mondiaux). Vous disposez de l'accès complet à votre code source. N'importe quel développeur ou agence technique peut reprendre votre site très rapidement.</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Êtes-vous compatibles avec PanneauPocket ou Illiwap ?</h4>
-                    <p class="text-slate-600">Oui. Nous savons que ces applications sont vitales pour les petites communes. Nos portails peuvent être synchronisés avec ces outils pour vous éviter une double saisie des alertes et actualités au quotidien.</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Je n'ai pas le temps de mettre à jour les démarches, comment faire ?</h4>
-                    <p class="text-slate-600">C'est prévu ! Nous connectons votre site au flux officiel <strong>Service-Public.fr</strong>. Ainsi, toutes les démarches (Passeport, Urbanisme, Élections...) sont automatiquement mises à jour avec les derniers CERFA et textes de loi, sans aucune intervention de votre part.</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl shadow-sm">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Gérez-vous la facturation Chorus Pro ?</h4>
-                    <p class="text-slate-600">Absolument. Nos factures sont déposées directement sur le portail Chorus Pro de l'État avec votre numéro d'engagement juridique, facilitant ainsi le règlement par le Trésor Public.</p>
-                </div>
-            </div>
-
-        </div>
-    </main>
-    <footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
-                    <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
-                </div>
-                <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web pour le secteur public en Région Sud. Solutions souveraines, conformes RGPD et RGAA.</p>
-                <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition">Nous contacter</a>
-            </div>
-            <div>
-                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Navigation</h4>
-                <ul class="space-y-3 text-sm">
-                    <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
-                    <li><a href="tarifs.html" class="hover:text-white transition">Tarifs & Packs</a></li>
-                    <li><a href="a-propos.html" class="hover:text-white transition">L'Agence</a></li>
-                    <li><a href="audit.html" class="hover:text-white transition text-brand-400 font-bold">Audit Gratuit</a></li>
+                <ul class="space-y-3 mb-8 flex-grow text-sm">
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Design responsive <strong>Mobile & PC</strong></span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Jusqu'à 10 pages (Mairie, Histoire, Démarches…)</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Fil d'actualités simple</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Formulaire de contact sécurisé</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Conformité RGPD & cookies</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Hébergement France 1ère année inclus</span></li>
+                    <li class="flex gap-3 items-start text-slate-400"><span class="font-black mt-0.5">—</span><span>Bandeau d'alerte population</span></li>
+                    <li class="flex gap-3 items-start text-slate-400"><span class="font-black mt-0.5">—</span><span>Espace téléchargements</span></li>
                 </ul>
+                <a href="contact.html" class="block w-full text-center border-2 border-brand-600 text-brand-600 py-3 rounded-xl font-bold hover:bg-brand-50 transition">Demander un devis</a>
             </div>
-            <div>
-                <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-6">Informations</h4>
-                <ul class="space-y-3 text-sm">
-                    <li>SIRET : 102 977 683 00014</li>
-                    <li>83500 La Seyne-sur-Mer, France</li>
-                    <li><a href="mentions-legales.html" class="underline hover:text-white transition">Mentions Légales</a></li>
+
+            <!-- Portail Citoyen (recommended) -->
+            <div class="bg-slate-900 p-8 md:p-10 rounded-3xl shadow-2xl border-2 border-brand-600 flex flex-col relative transform lg:-translate-y-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-600 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-wider shadow-lg">⭐ Recommandé</div>
+                <div class="text-xs font-black uppercase tracking-widest text-brand-400 mb-2 mt-4">Portail</div>
+                <h3 class="text-2xl font-black text-white mb-2">Citoyen Complet</h3>
+                <p class="text-slate-400 mb-6 text-sm h-12">Pour les communes de 500 à 2 000+ habitants.</p>
+                <div class="mb-6 border-b border-slate-700 pb-6">
+                    <div class="text-5xl font-black text-white">1 990 €</div>
+                    <div class="text-xs text-slate-400 mt-1">Net · TVA non applicable art. 293B CGI</div>
+                    <div class="mt-3 inline-flex items-center gap-2 bg-brand-900 text-brand-200 text-xs font-bold px-3 py-1.5 rounded-full border border-brand-700">
+                        ⏱ 6–8 semaines
+                    </div>
+                </div>
+                <ul class="space-y-3 mb-8 flex-grow text-sm text-slate-300">
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span><strong>Tout le Pack Essentiel +</strong></span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span><strong>Bandeau d'Alerte Population</strong> (Urgence, Météo, Travaux)</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span>Annuaire interactif associations & commerces</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span>Espace téléchargements (CR Conseil, Bulletins…)</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span>Agenda communal interactif</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span>Formation secrétariat incluse (1h visio)</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span>Score Lighthouse &gt; 95/100</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-brand-400 font-black mt-0.5">✓</span><span>Rapport RGAA livré avec le projet</span></li>
                 </ul>
+                <a href="contact.html" class="block w-full text-center bg-brand-600 hover:bg-brand-500 text-white py-3 rounded-xl font-bold transition shadow-lg">Demander un devis</a>
+            </div>
+
+            <!-- Sur Mesure -->
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200 flex flex-col hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Pack</div>
+                <h3 class="text-2xl font-black text-slate-900 mb-2">Ingénierie Sur-Mesure</h3>
+                <p class="text-slate-500 mb-6 text-sm h-12">Intercommunalités, mairies > 3 000 hab., besoins complexes.</p>
+                <div class="mb-6 border-b border-slate-100 pb-6">
+                    <div class="text-3xl font-black text-brand-600">Sur Devis</div>
+                    <div class="text-xs text-slate-400 mt-1">Devis personnalisé sous 48h</div>
+                    <div class="mt-3 inline-flex items-center gap-2 bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1.5 rounded-full">
+                        ⏱ Délai selon cahier des charges
+                    </div>
+                </div>
+                <ul class="space-y-3 mb-8 flex-grow text-sm">
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span><strong>Tout le Portail Citoyen +</strong></span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Démarches en ligne (formulaires CERFA numériques)</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Espace intranet agents municipaux</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>API & interconnexion logiciels métier</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>SLA garanti & astreinte</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Audit de sécurité dédié (pentest)</span></li>
+                    <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Référent technique dédié</span></li>
+                </ul>
+                <a href="contact.html" class="block w-full text-center border-2 border-slate-900 text-slate-900 py-3 rounded-xl font-bold hover:bg-slate-50 transition">Nous contacter</a>
             </div>
         </div>
-    </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true, offset: 50 });
-        const mobileBtn = document.getElementById('mobile-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileBtn && mobileMenu) {
-            mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-    </script>
-    </body>
+
+        <!-- Maintenance pricing -->
+        <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-10 mb-24" data-aos="fade-up">
+            <h2 class="text-3xl font-black text-slate-900 mb-2">Maintenance annuelle</h2>
+            <p class="text-slate-500 mb-8">Après la première année incluse, choisissez votre niveau de support.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <div class="font-black text-xl mb-1">Autonomie</div>
+                    <div class="text-3xl font-black text-brand-600 mb-2">0 €/an</div>
+                    <p class="text-sm text-slate-500">Vous gérez. Code source livré, documentation complète. Support email 5j/7.</p>
+                </div>
+                <div class="bg-brand-50 p-6 rounded-2xl border border-brand-200">
+                    <div class="font-black text-xl mb-1 text-brand-700">Sérénité ⭐</div>
+                    <div class="text-3xl font-black text-brand-600 mb-2">39 €/mois</div>
+                    <p class="text-sm text-slate-600">Mises à jour, sauvegardes, surveillance 24/7, 2h d'évolutions incluses.</p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-2xl">
+                    <div class="font-black text-xl mb-1 text-white">Priorité</div>
+                    <div class="text-3xl font-black text-brand-400 mb-2">79 €/mois</div>
+                    <p class="text-sm text-slate-400">SLA 4h, astreinte, 5h d'évolutions, rapport mensuel, hotline dédiée.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROI Calculator -->
+        <div class="bg-gradient-to-br from-slate-900 to-brand-900 rounded-3xl p-10 mb-24 text-white" data-aos="fade-up">
+            <h2 class="text-3xl font-black mb-2">💰 Calculateur d'économies</h2>
+            <p class="text-slate-400 mb-8">Estimez combien vous pouvez économiser en passant à Studio 4242.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-300 mb-2">Coût actuel de votre site web (€/an)</label>
+                        <input type="range" id="current-cost" min="500" max="10000" step="100" value="3000" class="w-full" oninput="calcROI()">
+                        <div class="flex justify-between text-xs text-slate-500 mt-1"><span>500 €</span><span id="current-cost-val" class="text-white font-bold">3 000 €</span><span>10 000 €</span></div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-300 mb-2">Nombre d'incidents de sécurité/an</label>
+                        <input type="range" id="incidents" min="0" max="10" step="1" value="2" class="w-full" oninput="calcROI()">
+                        <div class="flex justify-between text-xs text-slate-500 mt-1"><span>0</span><span id="incidents-val" class="text-white font-bold">2 incidents</span><span>10</span></div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-300 mb-2">Coût moyen d'un incident (€)</label>
+                        <input type="range" id="incident-cost" min="200" max="5000" step="100" value="800" class="w-full" oninput="calcROI()">
+                        <div class="flex justify-between text-xs text-slate-500 mt-1"><span>200 €</span><span id="incident-cost-val" class="text-white font-bold">800 €</span><span>5 000 €</span></div>
+                    </div>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-8 flex flex-col justify-center">
+                    <div class="text-center mb-6">
+                        <div class="text-sm text-slate-400 uppercase tracking-widest mb-1">Coût actuel estimé sur 3 ans</div>
+                        <div id="current-total" class="text-4xl font-black text-red-400">—</div>
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="text-sm text-slate-400 uppercase tracking-widest mb-1">Avec Studio 4242 (Portail + Sérénité)</div>
+                        <div id="s4242-total" class="text-4xl font-black text-green-400">—</div>
+                    </div>
+                    <div class="border-t border-white/20 pt-6 text-center">
+                        <div class="text-sm text-slate-400 mb-1">Économies estimées sur 3 ans</div>
+                        <div id="savings" class="text-5xl font-black text-yellow-400">—</div>
+                        <a href="contact.html" class="mt-6 inline-block bg-brand-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-500 transition">Obtenir un devis →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legal note -->
+        <div class="bg-brand-50 border border-brand-200 rounded-2xl p-8 mb-12" data-aos="fade-up">
+            <h3 class="font-black text-lg text-brand-900 mb-3">📋 Procédure d'achat simplifiée</h3>
+            <p class="text-brand-800 text-sm leading-relaxed">Conformément à l'article <strong>R2122-8 du Code de la Commande Publique</strong>, les achats inférieurs à <strong>40 000 € HT</strong> peuvent être passés de gré à gré, sans procédure formalisée. Nos trois offres sont toutes en dessous de ce seuil. Il vous suffit de nous demander un devis, de le valider, et de signer un bon de commande. <a href="faq.html#marche-public" class="underline font-bold">Voir notre FAQ sur les marchés publics →</a></p>
+        </div>
+
+    </div>
+</main>
+
+<footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
+                <span class="font-black text-xl tracking-tighter text-white uppercase">Studio 4242</span>
+            </div>
+            <p class="text-sm leading-relaxed max-w-sm mb-6">Ingénierie web souveraine pour le secteur public. Conformes RGPD, RGAA, ANSSI.</p>
+            <a href="contact.html" class="inline-block bg-brand-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-brand-500 transition text-sm">Demander un devis</a>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigation</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
+                <li><a href="a-propos.html" class="hover:text-white transition">L'Agence</a></li>
+                <li><a href="realisations.html" class="hover:text-white transition">Réalisations</a></li>
+                <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+            <ul class="space-y-3 text-sm">
+                <li>📞 <a href="tel:0783494849" class="hover:text-white">07 83 49 48 49</a></li>
+                <li>SIRET : 102 977 683 00014</li>
+                <li>83500 La Seyne-sur-Mer</li>
+                <li><a href="mentions-legales.html" class="underline hover:text-white">Mentions Légales</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ once: true, offset: 80, duration: 700 });
+document.getElementById('mobile-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+window.addEventListener('scroll', () => {
+    const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progress-bar').style.width = (s/h*100)+'%';
+    const btn = document.getElementById('back-top');
+    btn.style.opacity = s > 300 ? '1' : '0';
+    btn.style.pointerEvents = s > 300 ? 'auto' : 'none';
+});
+
+function fmt(n) { return n.toLocaleString('fr-FR') + ' €'; }
+function calcROI() {
+    const cur = parseInt(document.getElementById('current-cost').value);
+    const inc = parseInt(document.getElementById('incidents').value);
+    const incCost = parseInt(document.getElementById('incident-cost').value);
+    document.getElementById('current-cost-val').textContent = fmt(cur);
+    document.getElementById('incidents-val').textContent = inc + ' incident' + (inc > 1 ? 's' : '');
+    document.getElementById('incident-cost-val').textContent = fmt(incCost);
+    const currentTotal = (cur + inc * incCost) * 3;
+    const s4242Total = 1990 + (39 * 12 * 2); // pack + 2 ans maintenance
+    const savings = currentTotal - s4242Total;
+    document.getElementById('current-total').textContent = fmt(currentTotal);
+    document.getElementById('s4242-total').textContent = fmt(Math.max(s4242Total, 0));
+    document.getElementById('savings').textContent = savings > 0 ? fmt(savings) : '0 €';
+    document.getElementById('savings').style.color = savings > 0 ? '#facc15' : '#94a3b8';
+}
+calcROI();
+</script>
+</body>
 </html>
