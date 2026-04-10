@@ -173,46 +173,6 @@
             </div>
         </div>
 
-        <!-- ROI Calculator -->
-        <div class="bg-gradient-to-br from-slate-900 to-brand-900 rounded-3xl p-10 mb-24 text-white" data-aos="fade-up">
-            <h2 class="text-3xl font-black mb-2">💰 Calculateur d'économies</h2>
-            <p class="text-slate-400 mb-8">Estimez combien vous pouvez économiser en passant à Studio 4242.</p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <div class="space-y-6">
-                    <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-2">Coût actuel de votre site web (€/an)</label>
-                        <input type="range" id="current-cost" min="500" max="10000" step="100" value="3000" class="w-full" oninput="calcROI()">
-                        <div class="flex justify-between text-xs text-slate-500 mt-1"><span>500 €</span><span id="current-cost-val" class="text-white font-bold">3 000 €</span><span>10 000 €</span></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-2">Nombre d'incidents de sécurité/an</label>
-                        <input type="range" id="incidents" min="0" max="10" step="1" value="2" class="w-full" oninput="calcROI()">
-                        <div class="flex justify-between text-xs text-slate-500 mt-1"><span>0</span><span id="incidents-val" class="text-white font-bold">2 incidents</span><span>10</span></div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-2">Coût moyen d'un incident (€)</label>
-                        <input type="range" id="incident-cost" min="200" max="5000" step="100" value="800" class="w-full" oninput="calcROI()">
-                        <div class="flex justify-between text-xs text-slate-500 mt-1"><span>200 €</span><span id="incident-cost-val" class="text-white font-bold">800 €</span><span>5 000 €</span></div>
-                    </div>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-8 flex flex-col justify-center">
-                    <div class="text-center mb-6">
-                        <div class="text-sm text-slate-400 uppercase tracking-widest mb-1">Coût actuel estimé sur 3 ans</div>
-                        <div id="current-total" class="text-4xl font-black text-red-400">—</div>
-                    </div>
-                    <div class="text-center mb-6">
-                        <div class="text-sm text-slate-400 uppercase tracking-widest mb-1">Avec Studio 4242 (Portail + Sérénité)</div>
-                        <div id="s4242-total" class="text-4xl font-black text-green-400">—</div>
-                    </div>
-                    <div class="border-t border-white/20 pt-6 text-center">
-                        <div class="text-sm text-slate-400 mb-1">Économies estimées sur 3 ans</div>
-                        <div id="savings" class="text-5xl font-black text-yellow-400">—</div>
-                        <a href="contact.html" class="mt-6 inline-block bg-brand-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-500 transition">Obtenir un devis →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Legal note -->
         <div class="bg-brand-50 border border-brand-200 rounded-2xl p-8 mb-12" data-aos="fade-up">
             <h3 class="font-black text-lg text-brand-900 mb-3">📋 Procédure d'achat simplifiée</h3>
