@@ -219,8 +219,8 @@
                 </button>
                 <div class="faq-answer px-6">
                     <div class="pb-6 text-slate-600 leading-relaxed text-sm">
-                        <p class="mb-3">Absolument. L'interface d'administration est conçue spécifiquement pour des utilisateurs non-techniques. Les principales actions (publier une actualité, ajouter un document, modifier les horaires) se font en quelques clics, sans écrire une seule ligne de code.</p>
-                        <p>Chaque livraison inclut une <strong>formation visio d'1h</strong> pour le(s) secrétaire(s) concerné(s), ainsi qu'un guide utilisateur PDF personnalisé.</p>
+                        <p class="mb-3">Absolument. Contrairement aux "usines à gaz" classiques, nous développons un <strong>tableau de bord simplifié et épuré</strong>, personnalisé uniquement avec les outils dont vos agents ont besoin au quotidien (publier une actualité, ajouter un arrêté). Cela supprime les risques de mauvaises manipulations et fait gagner un temps précieux à votre secrétariat.</p>
+                        <p>Chaque livraison inclut une <strong>formation visio de 2h</strong> pour le(s) secrétaire(s) concerné(s), ainsi qu'un guide utilisateur PDF personnalisé.</p>
                     </div>
                 </div>
             </div>
@@ -386,5 +386,25 @@ function checkNoResults() {
     document.getElementById('no-results').style.display = visible.length === 0 ? 'block' : 'none';
 }
 </script>
+<div class="fixed left-4 bottom-6 z-50">
+    <button onclick="document.getElementById('a11y-menu').classList.toggle('hidden')" class="w-12 h-12 bg-slate-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-brand-600 transition outline-none focus:ring-4 focus:ring-brand-500">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4c0 1.1-.45 2.1-1.17 2.83L16.66 10h2.34v2h-3v7h-2v-4h-4v4H8v-7H5v-2h2.34l1.83-1.17A3.98 3.98 0 018 6a4 4 0 014-4zm0 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+    </button>
+    
+    <div id="a11y-menu" class="hidden absolute bottom-16 left-0 bg-white p-2 rounded-2xl shadow-2xl border border-slate-200 w-56 mb-2">
+        <div class="p-3 border-b border-slate-100 mb-2">
+            <h4 class="font-black text-slate-900 text-sm">Outils d'accessibilité</h4>
+        </div>
+        <button onclick="document.body.classList.toggle('grayscale')" class="w-full text-left text-sm font-bold text-slate-600 p-3 hover:bg-slate-50 hover:text-brand-600 rounded-xl transition flex items-center gap-3">
+            <span class="text-lg">👁️</span> Niveaux de gris
+        </button>
+        <button onclick="document.body.classList.toggle('contrast-125')" class="w-full text-left text-sm font-bold text-slate-600 p-3 hover:bg-slate-50 hover:text-brand-600 rounded-xl transition flex items-center gap-3">
+            <span class="text-lg">🌓</span> Contraste élevé
+        </button>
+        <button onclick="document.body.classList.toggle('text-lg')" class="w-full text-left text-sm font-bold text-slate-600 p-3 hover:bg-slate-50 hover:text-brand-600 rounded-xl transition flex items-center gap-3">
+            <span class="text-lg">A+</span> Agrandir le texte
+        </button>
+    </div>
+</div>
 </body>
 </html>
