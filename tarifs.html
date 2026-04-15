@@ -20,47 +20,111 @@
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
 </button>
 
-<header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <a href="index.html" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
-                <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
-            </a>
-            <nav class="hidden lg:flex space-x-7 text-xs font-bold uppercase tracking-widest items-center">
-                <a href="index.html" class="text-slate-600 hover:text-brand-600 transition">Accueil</a>
-                <a href="services.html" class="text-slate-600 hover:text-brand-600 transition">Services</a>
-                <a href="tarifs.html" class="text-slate-600 hover:text-brand-600 transition">Tarifs</a>
-                <a href="a-propos.html" class="text-slate-600 hover:text-brand-600 transition">L'Agence</a>
-                <a href="realisations.html" class="text-slate-600 hover:text-brand-600 transition">Réalisations</a>
-                <a href="securite.html" class="text-slate-600 hover:text-brand-600 transition">Sécurité</a>
-                <a href="guide-rgpd.html" class="text-slate-600 hover:text-brand-600 transition">Guide RGPD</a>
-                <a href="faq.html" class="text-slate-600 hover:text-brand-600 transition">FAQ</a>
-                <a href="audit.html" class="text-slate-600 hover:text-brand-600 transition">Audit Gratuit</a>
-            </nav>
-            <div class="hidden lg:block">
-                <a href="contact.html" class="bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contact</a>
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-600/30">42</div>
+                    <span class="font-black text-2xl tracking-tighter text-slate-900 hidden sm:block">STUDIO <span class="text-brand-600">4242</span></span>
+                </a>
+                
+                <nav class="hidden lg:flex space-x-8 text-xs font-bold uppercase tracking-widest items-center">
+                    
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition outline-none">
+                            L'Agence
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-4 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+                            <div class="py-2">
+                                <a href="a-propos.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Notre ADN & L'Équipe</a>
+                                <a href="realisations.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Nos Réalisations</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition outline-none">
+                            Nos Solutions
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-4 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+                            <div class="py-2">
+                                <a href="services.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Services & Fonctionnalités</a>
+                                <a href="securite.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Cybersécurité & Normes</a>
+                                <a href="tarifs.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Tarifs & Packs</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition outline-none">
+                            Ressources
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-4 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+                            <div class="py-2">
+                                <a href="guide-rgpd.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Guide RGPD Mairies</a>
+                                <a href="faq.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Foire Aux Questions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="audit.html" class="text-brand-600 hover:text-brand-900 transition">Audit Gratuit</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <a href="contact.html" class="hidden lg:block bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contactez-nous</a>
+                    <button id="mobile-btn" class="lg:hidden p-2 text-slate-900 focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
             </div>
-            <button id="mobile-btn" class="lg:hidden p-2 text-slate-900">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
         </div>
-    </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40">
-        <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
-            <a href="index.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Accueil</a>
-            <a href="services.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Services</a>
-            <a href="tarifs.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Tarifs</a>
-            <a href="a-propos.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">L'Agence</a>
-            <a href="realisations.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Réalisations</a>
-            <a href="securite.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Sécurité</a>
-            <a href="guide-rgpd.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Guide RGPD</a>
-            <a href="faq.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">FAQ</a>
-            <a href="audit.html" class="text-slate-700 font-bold text-lg p-2 hover:bg-slate-50 rounded-lg">Audit Gratuit</a>
-            <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-3 text-center rounded-xl shadow-lg mt-2">Contactez-nous</a>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40 max-h-[85vh] overflow-y-auto">
+            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg">Accueil</a>
+                
+                <details class="group/mobile">
+                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
+                        L'Agence
+                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
+                        <a href="a-propos.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Notre ADN & L'Équipe</a>
+                        <a href="realisations.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Nos Réalisations</a>
+                    </div>
+                </details>
+
+                <details class="group/mobile">
+                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
+                        Nos Solutions
+                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
+                        <a href="services.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Services & Fonctionnalités</a>
+                        <a href="securite.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Cybersécurité & Normes</a>
+                        <a href="tarifs.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Tarifs & Packs</a>
+                    </div>
+                </details>
+
+                <details class="group/mobile">
+                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
+                        Ressources
+                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
+                        <a href="guide-rgpd.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Guide RGPD Mairies</a>
+                        <a href="faq.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Foire Aux Questions</a>
+                    </div>
+                </details>
+
+                <a href="audit.html" class="text-brand-600 font-bold text-lg p-3 hover:bg-brand-50 rounded-lg mt-2">Audit Gratuit</a>
+                <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-4 text-center rounded-xl shadow-lg mt-4">Contactez-nous</a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
 <main class="flex-grow pt-20 pb-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
