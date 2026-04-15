@@ -458,8 +458,8 @@ function acceptCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
 }
 window.addEventListener('load', () => {
-    if (!localStorage.getItem('cookies_accepted')) {
-        setTimeout(() => { document.getElementById('cookie-banner').style.display = 'block'; }, 1500);
+    if (localStorage.getItem('cookies_accepted')) {
+        document.getElementById('cookie-banner').style.display = 'none';
     }
 });
 </script>
