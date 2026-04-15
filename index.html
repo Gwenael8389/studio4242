@@ -72,7 +72,7 @@
 </div>
 
 <!-- Back to top -->
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition: opacity 0.3s">
+<button id="back-top" aria-label="Retourner en haut de la page" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition: opacity 0.3s">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
 </button>
 
@@ -93,8 +93,8 @@
                         </button>
                         <div class="absolute left-0 mt-4 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
                             <div class="py-2">
-                                <a href="a-propos.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Notre ADN & L'Équipe</a>
-                                <a href="realisations.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Nos Réalisations</a>
+                                <a href="a-propos.html" aria-label="En savoir plus sur l'agence'" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Notre ADN & L'Équipe</a>
+                                <a href="realisations.html" aria-label="En savoir plus sur les Réalisations déjà faites" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Nos Réalisations</a>
                             </div>
                         </div>
                     </div>
@@ -106,9 +106,9 @@
                         </button>
                         <div class="absolute left-0 mt-4 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
                             <div class="py-2">
-                                <a href="services.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Services & Fonctionnalités</a>
-                                <a href="securite.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Cybersécurité & Normes</a>
-                                <a href="tarifs.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Tarifs & Packs</a>
+                                <a href="services.html" aria-label="En savoir plus sur le Portail Citoyen Sur-Mesure" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Services & Fonctionnalités</a>
+                                <a href="securite.html" aria-label="En savoir plus sur la Cybersécurité" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Cybersécurité & Normes</a>
+                                <a href="tarifs.html" aria-label="En savoir plus sur les tarifs" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Tarifs & Packs</a>
                             </div>
                         </div>
                     </div>
@@ -120,8 +120,8 @@
                         </button>
                         <div class="absolute left-0 mt-4 w-56 bg-white border border-slate-100 rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
                             <div class="py-2">
-                                <a href="guide-rgpd.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Guide RGPD Mairies</a>
-                                <a href="faq.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Foire Aux Questions</a>
+                                <a href="guide-rgpd.html" aria-label="Guide RGPD destiné aux mairies" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Guide RGPD Mairies</a>
+                                <a href="faq.html" aria-label="Questions courantes" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Foire Aux Questions</a>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
 
                 <div class="flex items-center gap-4">
                     <a href="contact.html" class="hidden lg:block bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contactez-nous</a>
-                    <button id="mobile-btn" class="lg:hidden p-2 text-slate-900 focus:outline-none">
+                    <button id="mobile-btn" aria-label="Ouvrir le menu de navigation" class="lg:hidden p-2 text-slate-900 focus:outline-none">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
@@ -182,7 +182,7 @@
         </div>
     </header>
 
-<!-- HERO -->
+<main><!-- HERO -->
 <section class="relative pt-24 pb-32 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
     <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-brand-200 rounded-full blur-3xl opacity-40 -translate-y-1/3 translate-x-1/3"></div>
     <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-200 rounded-full blur-3xl opacity-30 translate-y-1/3 -translate-x-1/3"></div>
@@ -283,7 +283,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="bg-slate-50 p-10 rounded-3xl border border-slate-100 card-hover" data-aos="fade-up" data-aos-delay="150">
                 <div class="w-14 h-14 bg-brand-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-brand-600/30">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h3.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
                 </div>
                 <h3 class="text-xl font-black mb-3">Démarches Automatisées</h3>
                 <p class="text-slate-600 leading-relaxed text-sm">Intégration du co-marquage Service-Public.fr. Vos fiches d'état civil et d'urbanisme s'actualisent toutes seules au gré des lois.</p>
@@ -363,7 +363,7 @@
         </div>
     </div>
 </section>
-
+</main>
 <!-- FOOTER -->
 <footer class="bg-slate-900 text-slate-400 py-20">
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -379,7 +379,7 @@
             </div>
         </div>
         <div>
-            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigation</h4>
+            <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigation</h3>
             <ul class="space-y-3 text-sm">
                 <li><a href="services.html" class="hover:text-white transition">Nos Services</a></li>
                 <li><a href="tarifs.html" class="hover:text-white transition">Tarifs & Packs</a></li>
@@ -391,7 +391,7 @@
             </ul>
         </div>
         <div>
-            <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+            <h3 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h3>
             <ul class="space-y-3 text-sm">
                 <li class="flex items-center gap-2">📞 <a href="tel:0783494849" class="hover:text-white">07 83 49 48 49</a></li>
                 <li class="flex items-center gap-2">✉️ <a href="mailto:gwenael.drouet@gmail.com" class="hover:text-white break-all">gwenael.drouet@gmail.com</a></li>
@@ -401,8 +401,8 @@
             </ul>
         </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-600">
-        © 2026 Studio 4242 · Gwénaël Drouet EI · Tous droits réservés · <a href="mentions-legales.html" class="underline hover:text-slate-400">Mentions légales</a>
+    <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-400">
+        © 2026 Studio 4242 · Gwénaël Drouet EI · Tous droits réservés · <a href="mentions-legales.html" class="underline hover:text-white">Mentions légales</a>
     </div>
 </footer>
 
@@ -463,6 +463,5 @@ window.addEventListener('load', () => {
     }
 });
 </script>
-
 </body>
 </html>

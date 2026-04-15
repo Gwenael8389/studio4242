@@ -662,6 +662,9 @@
   .cursor-pointer {
     cursor: pointer;
   }
+  .resize {
+    resize: both;
+  }
   .list-decimal {
     list-style-type: decimal;
   }
@@ -1618,13 +1621,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--color-brand-900);
-      }
-    }
-  }
-  .hover\:text-slate-400 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-slate-400);
       }
     }
   }
