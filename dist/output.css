@@ -1021,17 +1021,17 @@
     --tw-gradient-position: to top in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .bg-\[url\(\'\/images\/ccff\.webp\'\)\] {
+    background-image: url('/images/ccff.webp');
+  }
+  .bg-\[url\(\'\/images\/dashboard_classique\.webp\'\)\] {
+    background-image: url('/images/dashboard_classique.webp');
+  }
   .bg-\[url\(\'data\:image\/svg\+xml\;base64\,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0tMiAxMGwxMi0xMnoiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4\=\'\)\] {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0tMiAxMGwxMi0xMnoiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=');
   }
   .bg-\[url\(\'https\:\/\/images\.unsplash\.com\/photo-1498050108023-c5249f4df085\?q\=80\&w\=2072\&auto\=format\&fit\=crop\'\)\] {
     background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop');
-  }
-  .bg-\[url\(\'images\/ccff\.png\'\)\] {
-    background-image: url('images/ccff.png');
-  }
-  .bg-\[url\(\'images\/dashboard_classique\.png\'\)\] {
-    background-image: url('images/dashboard_classique.png');
   }
   .from-brand-900 {
     --tw-gradient-from: var(--color-brand-900);
