@@ -11,7 +11,6 @@
     <meta property="og:type" content="website">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
     <link href="/dist/output.css" rel="stylesheet">
-    <link href="src/aos.css" rel="stylesheet">
     <style>
         .gradient-text { background: linear-gradient(135deg, #2563eb, #1e3a8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #2563eb, #60a5fa); z-index: 9999; transition: width 0.1s; }
@@ -233,10 +232,13 @@
                         <div class="mx-auto bg-slate-800 rounded px-4 py-1 text-xs text-slate-400 font-mono">mairie-de-xxx.fr</div>
                     </div>
                     <img src="/images/dashboard_classique.webp" 
+                        srcset="/images/dashboard_classique_mobile.webp 600w, /images/dashboard_classique.webp 1123w"
+                        sizes="(max-width: 600px) 100vw, 800px"
                         alt="Portail citoyen moderne" 
                         width="800" 
                         height="600" 
                         fetchpriority="high"
+                        decoding="async"
                         class="rounded-b-lg opacity-90 w-full h-[280px] object-cover">
                     <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 float">
                         <div class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">

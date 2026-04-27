@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../src/aos.css";
 
 @theme {
   --color-brand-50: #eff6ff;
