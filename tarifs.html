@@ -20,6 +20,7 @@
         .module-card.selected { border-color: #2563eb; background-color: #eff6ff; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
         .module-card.selected .check-icon { display: block; }
         .module-card .check-icon { display: none; }
+        .mco-card.selected { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2); }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
@@ -34,7 +35,6 @@
                 </a>
                 
                 <nav class="hidden lg:flex space-x-8 text-xs font-bold uppercase tracking-widest items-center">
-                    
                     <div class="relative group">
                         <button class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition outline-none">
                             L'Agence
@@ -47,7 +47,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="relative group">
                         <button class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition outline-none">
                             Nos Solutions
@@ -61,7 +60,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="relative group">
                         <button class="flex items-center gap-1 text-slate-600 hover:text-brand-600 transition outline-none">
                             Ressources
@@ -74,7 +72,6 @@
                             </div>
                         </div>
                     </div>
-
                     <a href="audit.html" class="text-brand-600 hover:text-brand-900 transition">Audit Gratuit</a>
                 </nav>
 
@@ -86,9 +83,7 @@
                 </div>
             </div>
         </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40 max-h-[85vh] overflow-y-auto">
-            </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40 max-h-[85vh] overflow-y-auto"></div>
     </header>
 
 <main class="flex-grow pt-16 pb-32">
@@ -109,7 +104,6 @@
                 <div class="absolute -right-20 -top-20 opacity-10">
                     <svg class="w-96 h-96" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                
                 <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
                     <div class="flex-1">
                         <h3 class="text-3xl font-black mb-4">On ne développe rien sans votre accord.</h3>
@@ -164,7 +158,7 @@
                     <div class="check-icon absolute top-6 right-6 text-brand-600">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Intranet Élus & Agents</h3>
@@ -175,7 +169,7 @@
                     <div class="check-icon absolute top-6 right-6 text-brand-600">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Guichet & Démarches</h3>
@@ -186,18 +180,51 @@
                     <div class="check-icon absolute top-6 right-6 text-brand-600">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Signalement Incident</h3>
                     <p class="text-slate-600 text-sm">Outil permettant aux citoyens de signaler un problème (voirie, éclairage, propreté) avec photo et géolocalisation.</p>
                 </div>
 
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Démocratie Participative')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Démocratie Participative</h3>
+                    <p class="text-slate-600 text-sm">Sondages en ligne, boîte à idées et consultations citoyennes pour impliquer les habitants dans les projets locaux.</p>
+                </div>
+
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Portail Famille & Cantine')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Portail Famille / Paiement</h3>
+                    <p class="text-slate-600 text-sm">Module connecté à PayFIP pour le paiement de la cantine, crèche, périscolaire, avec facturation automatique.</p>
+                </div>
+
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Cartographie Interactive')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Cartographie Interactive</h3>
+                    <p class="text-slate-600 text-sm">Carte visuelle présentant le PLU, les points d'apport volontaire (poubelles), défibrillateurs, et zones de travaux.</p>
+                </div>
+
                 <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Annuaire & Vie Locale')">
                     <div class="check-icon absolute top-6 right-6 text-brand-600">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Annuaire Associations</h3>
@@ -208,7 +235,7 @@
                     <div class="check-icon absolute top-6 right-6 text-brand-600">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Réservation de Salles</h3>
@@ -219,7 +246,7 @@
                     <div class="check-icon absolute top-6 right-6 text-brand-600">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                     </div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Système d'Alerte SMS/Email</h3>
@@ -229,26 +256,29 @@
         </div>
 
         <div class="mb-16" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-2 flex items-center gap-4">
                 <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">4</span> 
                 Le Maintien en Conditions Opérationnelles (MCO)
             </h2>
+            <p class="text-slate-500 mb-8 ml-14">Sélectionnez le niveau d'accompagnement souhaité après le lancement de votre site.</p>
+            
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-10">
-                <p class="text-slate-500 mb-8">Parce qu'un site public se doit d'être sécurisé et à jour, nous proposons plusieurs niveaux d'accompagnement post-lancement. Hébergement souverain français garanti.</p>
-                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col">
+                    
+                    <div id="mco-autonomie" class="mco-card cursor-pointer bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col transition hover:border-brand-300" onclick="selectMCO('Niveau Autonomie')">
                         <div class="font-black text-xl mb-3">Niveau Autonomie</div>
-                        <p class="text-sm text-slate-500 mb-4 flex-grow">Livraison du code source et accès serveur complet. La maintenance est à la charge de vos équipes informatiques. Support par email 5j/7 pour les urgences liées à l'hébergement.</p>
+                        <p class="text-sm text-slate-500 mb-4 flex-grow">Livraison du code source et accès serveur complet. La maintenance est à la charge de vos équipes informatiques. Support par email pour les urgences liées à l'hébergement.</p>
                     </div>
-                    <div class="bg-brand-50 p-6 rounded-2xl border border-brand-200 relative flex flex-col">
-                        <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-lg">Le plus choisi</div>
+                    
+                    <div id="mco-serenite" class="mco-card selected cursor-pointer bg-brand-50 p-6 rounded-2xl border-2 border-brand-200 relative flex flex-col transition" onclick="selectMCO('Niveau Sérénité')">
+                        <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-lg">Recommandé</div>
                         <div class="font-black text-xl mb-3 text-brand-700">Niveau Sérénité</div>
-                        <p class="text-sm text-brand-800 mb-4 flex-grow">Nous nous occupons de tout. Application des patchs de sécurité critiques, sauvegardes hebdomadaires externalisées, surveillance 24/7 et forfait d'heures d'évolutions inclus.</p>
+                        <p class="text-sm text-brand-800 mb-4 flex-grow">Nous nous occupons de tout. Application des patchs de sécurité critiques, sauvegardes externalisées, surveillance 24/7 et forfait d'heures d'évolutions inclus.</p>
                     </div>
-                    <div class="bg-slate-900 p-6 rounded-2xl flex flex-col">
+                    
+                    <div id="mco-priorite" class="mco-card cursor-pointer bg-slate-900 p-6 rounded-2xl border-2 border-slate-900 flex flex-col transition hover:border-brand-500" onclick="selectMCO('Niveau Priorité')">
                         <div class="font-black text-xl mb-3 text-white">Niveau Priorité</div>
-                        <p class="text-sm text-slate-400 mb-4 flex-grow">Idéal pour les communes nécessitant une réactivité maximale. SLA garanti (Garantie de Temps de Rétablissement), astreinte technique soirs et week-ends, hotline dédiée.</p>
+                        <p class="text-sm text-slate-400 mb-4 flex-grow">Idéal pour les communes nécessitant une réactivité maximale. SLA garanti (Temps de rétablissement), astreinte technique soirs/week-ends, hotline dédiée.</p>
                     </div>
                 </div>
             </div>
@@ -264,25 +294,17 @@
             </p>
         </div>
 
-        <div class="text-center mt-16 mb-10" data-aos="fade-up">
-            <h2 class="text-3xl font-black text-slate-900 mb-6">Prêt à moderniser votre commune ?</h2>
-            <a href="contact.html" class="inline-block bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl font-black text-lg transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                Contacter l'administrateur pour un devis
-            </a>
-            <p class="text-sm text-slate-500 mt-4">Étude de faisabilité et maquette initiale sans engagement.</p>
-        </div>
-
     </div>
 </main>
 
 <div id="selection-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 text-white p-4 transform translate-y-full transition-transform duration-300 z-50 shadow-2xl flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8">
     <div class="mb-3 sm:mb-0">
         <span class="font-bold text-lg"><span id="module-count" class="text-brand-400">0</span> module(s) sélectionné(s)</span>
-        <span class="text-slate-400 text-sm hidden md:inline ml-2"> - Prêt pour le chiffrage.</span>
+        <span class="text-slate-400 text-sm hidden md:inline ml-2" id="mco-display"> - MCO : Sérénité</span>
     </div>
     <div class="flex gap-4">
         <button onclick="clearModules()" class="text-slate-400 hover:text-white text-sm font-medium transition">Réinitialiser</button>
-        <a href="contact.html" id="send-config-btn" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-2 rounded-lg font-bold text-sm transition">
+        <a href="contact.html" id="send-config-btn" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-2 rounded-lg font-bold text-sm transition text-center">
             Soumettre ma configuration
         </a>
     </div>
@@ -321,22 +343,20 @@
 
 <script src="src/aos.js"></script>
 <script>
-// Initialisation AOS
 AOS.init({ once: true, offset: 80, duration: 700 });
 
-// Menu Mobile
 document.getElementById('mobile-btn').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.toggle('hidden');
 });
 
-// Barre de progression
 window.addEventListener('scroll', () => {
     const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     document.getElementById('progress-bar').style.width = (s/h*100)+'%';
 });
 
-// --- Logique du Constructeur de Projet Interactive ---
+// --- Logique du Constructeur ---
 let selectedModules = new Set();
+let selectedMCO = 'Niveau Sérénité'; // Valeur par défaut
 
 function toggleModule(element, moduleName) {
     if (selectedModules.has(moduleName)) {
@@ -349,33 +369,47 @@ function toggleModule(element, moduleName) {
     updateSelectionBar();
 }
 
+function selectMCO(mcoName) {
+    selectedMCO = mcoName;
+    
+    // Nettoyage de la sélection visuelle des cartes MCO
+    document.querySelectorAll('.mco-card').forEach(card => card.classList.remove('selected'));
+    
+    // Ajout de la sélection sur la carte cliquée
+    if(mcoName === 'Niveau Autonomie') document.getElementById('mco-autonomie').classList.add('selected');
+    if(mcoName === 'Niveau Sérénité') document.getElementById('mco-serenite').classList.add('selected');
+    if(mcoName === 'Niveau Priorité') document.getElementById('mco-priorite').classList.add('selected');
+
+    updateSelectionBar();
+}
+
 function clearModules() {
     selectedModules.clear();
     document.querySelectorAll('.module-card').forEach(card => card.classList.remove('selected'));
+    selectMCO('Niveau Sérénité'); // Réinitialise le MCO par défaut
     updateSelectionBar();
 }
 
 function updateSelectionBar() {
     const bar = document.getElementById('selection-bar');
     const countSpan = document.getElementById('module-count');
+    const mcoDisplay = document.getElementById('mco-display');
     const btn = document.getElementById('send-config-btn');
     
     countSpan.textContent = selectedModules.size;
+    mcoDisplay.textContent = ` - MCO : ${selectedMCO.replace('Niveau ', '')}`;
     
+    // La barre s'affiche dès qu'il y a 1 module OU qu'un MCO est choisi (vu que MCO est choisi par défaut, on l'affiche s'il y a un module pour ne pas polluer l'écran d'entrée)
     if (selectedModules.size > 0) {
         bar.classList.remove('translate-y-full');
-        // Encode les modules dans l'URL pour pré-remplir la page contact
+        
+        // Encode les modules et le MCO dans l'URL pour la page contact
         const modulesList = Array.from(selectedModules).join(', ');
-        btn.href = `contact.html?sujet=Devis sur-mesure&modules=${encodeURIComponent(modulesList)}`;
+        btn.href = `contact.html?modules=${encodeURIComponent(modulesList)}&mco=${encodeURIComponent(selectedMCO)}`;
     } else {
         bar.classList.add('translate-y-full');
     }
 }
 </script>
-
-<script>
-    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

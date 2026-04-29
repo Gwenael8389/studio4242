@@ -249,6 +249,38 @@
             });
         }
     </script>
+    <script>
+        // --- NOUVEAU : Lecture de l'URL pour pré-remplir le formulaire ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const modulesSelectionnes = urlParams.get('modules');
+            const mcoSelectionne = urlParams.get('mco');
+            const textareaMessage = document.querySelector('textarea[name="message"]');
+
+            // S'il y a des données provenant du constructeur "Tarifs"
+            if (modulesSelectionnes || mcoSelectionne) {
+                let textePreRempli = "Bonjour,\n\nJe souhaite obtenir un devis pour la création du site de notre commune avec la configuration suivante :\n\n";
+                
+                if (modulesSelectionnes) {
+                    textePreRempli += "🛠 MODULES SÉLECTIONNÉS :\n- " + modulesSelectionnes.split(', ').join('\n- ') + "\n\n";
+                } else {
+                    textePreRempli += "🛠 MODULES SÉLECTIONNÉS : Aucun module spécifique sélectionné.\n\n";
+                }
+
+                if (mcoSelectionne) {
+                    textePreRempli += "🛡 NIVEAU DE MAINTENANCE (MCO) : " + mcoSelectionne + "\n\n";
+                }
+
+                textePreRempli += "Merci de me recontacter pour échanger sur ce projet et réaliser une première maquette.";
+                
+                // Insère le texte
+                textareaMessage.value = textePreRempli;
+
+                // Fait défiler la page automatiquement jusqu'au formulaire
+                textareaMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
 
 </body>
 </html>
