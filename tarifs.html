@@ -6,26 +6,24 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-KVVC8FF463');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Solutions & Tarifs | Studio 4242</title>
-    <meta name="description" content="Composez le site web de votre mairie à la carte. Tarifs transparents, modules adaptés et éligible aux achats de gré à gré < 40 000€ HT.">
+    <title>Composez votre solution | Studio 4242</title>
+    <meta name="description" content="Composez le site web de votre mairie à la carte. Validation sur maquette, forfait de base évolutif et modules personnalisables.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
     <link href="/dist/output.css" rel="stylesheet">
     <link href="src/aos.css" rel="stylesheet">
     <style>
         #progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563eb,#60a5fa);z-index:9999;transition:width 0.1s}
-        input[type=range] { accent-color: #2563eb; }
+        .module-card.selected { border-color: #2563eb; background-color: #eff6ff; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1); }
+        .module-card.selected .check-icon { display: block; }
+        .module-card .check-icon { display: none; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
 <div id="progress-bar" style="width:0%"></div>
-<button id="back-top" aria-label="Retourner en haut de la page" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-brand-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-brand-700 transition opacity-0 pointer-events-none" style="transition:opacity 0.3s">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7"/></svg>
-</button>
 
     <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +57,7 @@
                             <div class="py-2">
                                 <a href="services.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Services & Fonctionnalités</a>
                                 <a href="securite.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Cybersécurité & Normes</a>
-                                <a href="tarifs.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Tarifs & Modules</a>
+                                <a href="tarifs.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Votre Solution Sur-Mesure</a>
                             </div>
                         </div>
                     </div>
@@ -90,83 +88,38 @@
         </div>
 
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40 max-h-[85vh] overflow-y-auto">
-            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
-                <a href="index.html" class="text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg">Accueil</a>
-                
-                <details class="group/mobile">
-                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
-                        L'Agence
-                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
-                        <a href="a-propos.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Notre ADN & L'Équipe</a>
-                        <a href="realisations.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Nos Réalisations</a>
-                    </div>
-                </details>
-
-                <details class="group/mobile">
-                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
-                        Nos Solutions
-                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
-                        <a href="services.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Services & Fonctionnalités</a>
-                        <a href="securite.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Cybersécurité & Normes</a>
-                        <a href="tarifs.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Tarifs & Modules</a>
-                    </div>
-                </details>
-
-                <details class="group/mobile">
-                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
-                        Ressources
-                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
-                        <a href="guide-rgpd.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Guide RGPD Mairies</a>
-                        <a href="faq.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Foire Aux Questions</a>
-                    </div>
-                </details>
-
-                <a href="audit.html" class="text-brand-600 font-bold text-lg p-3 hover:bg-brand-50 rounded-lg mt-2">Audit Gratuit</a>
-                <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-4 text-center rounded-xl shadow-lg mt-4">Contactez-nous</a>
             </div>
-        </div>
     </header>
 
-<main class="flex-grow pt-20 pb-32">
+<main class="flex-grow pt-16 pb-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="text-center mb-16" data-aos="fade-up">
-            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Votre projet sur-mesure</span>
-            <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Construisons la plateforme<br>de votre commune.</h1>
-            <p class="text-xl text-slate-600 max-w-3xl mx-auto">Composez votre solution à la carte, adaptée à vos besoins réels et respectueuse de votre budget. Toutes nos prestations sont éligibles aux <strong>achats de gré à gré (&lt; 40 000 € HT)</strong>.</p>
+            <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Votre projet 100% à la carte</span>
+            <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Construisez la plateforme<br>idéale pour votre commune.</h1>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">Pas de mauvaises surprises. Nous concevons d'abord une maquette sur-mesure. Vous validez, puis vous ajoutez uniquement les modules dont vos citoyens ont besoin.</p>
         </div>
 
-        <div class="mb-12" data-aos="fade-up" data-aos-delay="0">
+        <div class="mb-16" data-aos="fade-up" data-aos-delay="0">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
                 <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">1</span> 
-                Le Socle : Site Internet & Conformité
+                Conception & Validation de la Maquette
             </h2>
-            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-8 items-center hover:shadow-xl transition">
-                <div class="flex-1">
-                    <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full mb-4">
-                        Indispensable
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-3">Site Web Mairie Citoyen</h3>
-                    <p class="text-slate-600 mb-6">La fondation incontournable pour assurer une présence efficace et légale sur internet, sans nécessiter d'expertise technique pour vos équipes municipales.</p>
-                    <ul class="space-y-3 text-sm text-slate-700 grid grid-cols-1 sm:grid-cols-2 gap-x-4">
-                        <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Design responsive <strong>Mobile & PC</strong></span></li>
-                        <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Conformité stricte (RGAA, RGPD, ANSSI)</span></li>
-                        <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Jusqu'à 10 pages structurées</span></li>
-                        <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Fil d'actualités & Contact sécurisé</span></li>
-                        <li class="flex gap-3 items-start"><span class="text-green-600 font-black mt-0.5">✓</span><span>Hébergement souverain France inclus (1an)</span></li>
-                    </ul>
+            <div class="bg-slate-900 text-white p-8 md:p-12 rounded-3xl shadow-xl relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 opacity-10">
+                    <svg class="w-96 h-96" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
-                <div class="w-full md:w-72 bg-slate-50 p-8 rounded-2xl border border-slate-100 text-center shrink-0">
-                    <div class="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">À partir de</div>
-                    <div class="text-5xl font-black text-brand-600 mb-1">990 €</div>
-                    <div class="text-xs text-slate-500 mb-4">Net · TVA non applicable art. 293B CGI</div>
-                    <a href="contact.html" class="block w-full bg-white border-2 border-brand-600 text-brand-600 py-2.5 rounded-xl font-bold hover:bg-brand-50 transition text-sm">Demander une maquette</a>
+                
+                <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <h3 class="text-3xl font-black mb-4">On ne développe rien sans votre accord.</h3>
+                        <p class="text-slate-300 mb-6 text-lg">Notre méthodologie commence toujours par une phase de design. Nous réalisons une maquette complète de la future page d'accueil de votre commune, reprenant votre identité visuelle et votre blason.</p>
+                        <ul class="space-y-4 text-slate-200">
+                            <li class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center text-brand-400">🎨</div> Création d'une identité visuelle moderne et respectueuse de votre histoire.</li>
+                            <li class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center text-brand-400">🤝</div> Ajustements illimités jusqu'à validation par le conseil municipal.</li>
+                            <li class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center text-brand-400">✅</div> <strong>Engagement zéro risque :</strong> le développement ne commence qu'après signature.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,103 +127,168 @@
         <div class="mb-16" data-aos="fade-up" data-aos-delay="100">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
                 <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">2</span> 
-                Les Modules : Complétez votre solution
+                Le Socle Fondamental : Mairie Connectée
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border-2 border-slate-200">
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full mb-4">
+                            Inclus d'office
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mb-3">Site Web Institutionnel & Sécurisé</h3>
+                        <p class="text-slate-600 mb-6">La fondation incontournable pour assurer une présence efficace et légale sur internet. Ce socle garantit votre conformité aux normes gouvernementales sans nécessiter d'expertise technique en interne.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm text-slate-700">
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Design 100% responsive (Mobile, Tablette, PC)</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Conformité stricte <strong>RGAA, RGPD, ANSSI</strong></span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Architecture de l'information (jusqu'à 15 pages)</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Module d'actualités & agenda basique</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Formulaire de contact sécurisé</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Interface d'administration ultra-simplifiée</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16" data-aos="fade-up" data-aos-delay="150">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-2 flex items-center gap-4">
+                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">3</span> 
+                Construisez votre plateforme (Sélectionnez vos modules)
+            </h2>
+            <p class="text-slate-500 mb-8 ml-14">Cliquez sur les fonctionnalités que vous souhaitez ajouter à votre socle pour préparer votre cahier des charges.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modules-container">
                 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-brand-400 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 mb-5 group-hover:scale-110 transition-transform">
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Espace Élus')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Espace Collaboratif Élus</h3>
-                    <p class="text-slate-600 text-sm mb-6">Un intranet hautement sécurisé pour partager les ordres du jour, les comptes rendus de conseil municipal et les documents de travail en toute confidentialité.</p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm font-bold text-slate-400 uppercase tracking-wider">Sur devis</span>
-                        <span class="text-brand-600 font-bold text-sm group-hover:translate-x-1 transition-transform">Ajouter →</span>
-                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Intranet Élus & Agents</h3>
+                    <p class="text-slate-600 text-sm">Espace privé sécurisé pour partager ordres du jour, CR de conseils, et documents confidentiels.</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-brand-400 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 mb-5 group-hover:scale-110 transition-transform">
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Démarches en ligne')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Démarches & Espace Citoyen</h3>
-                    <p class="text-slate-600 text-sm mb-6">Simplifiez le quotidien avec le signalement d'incidents (voirie, éclairage), la prise de RDV et l'intégration de formulaires CERFA en ligne.</p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm font-bold text-slate-400 uppercase tracking-wider">Sur devis</span>
-                        <span class="text-brand-600 font-bold text-sm group-hover:translate-x-1 transition-transform">Ajouter →</span>
-                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Guichet & Démarches</h3>
+                    <p class="text-slate-600 text-sm">Dématérialisation des CERFA, demande d'actes d'état civil, prise de RDV passeport/CNI.</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-brand-400 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 mb-5 group-hover:scale-110 transition-transform">
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Signalement Citoyen')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Signalement Incident</h3>
+                    <p class="text-slate-600 text-sm">Outil permettant aux citoyens de signaler un problème (voirie, éclairage, propreté) avec photo et géolocalisation.</p>
+                </div>
+
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Annuaire & Vie Locale')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Annuaire Associations</h3>
+                    <p class="text-slate-600 text-sm">Répertoire interactif des associations, commerçants et professionnels de santé de la commune.</p>
+                </div>
+
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Réservation de Salles')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Vie Locale & Billetterie</h3>
-                    <p class="text-slate-600 text-sm mb-6">Dynamisez le territoire avec un annuaire interactif des associations/commerces, un agenda, la gestion de billetterie et la réservation de salles.</p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm font-bold text-slate-400 uppercase tracking-wider">Sur devis</span>
-                        <span class="text-brand-600 font-bold text-sm group-hover:translate-x-1 transition-transform">Ajouter →</span>
-                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Réservation de Salles</h3>
+                    <p class="text-slate-600 text-sm">Agenda en ligne permettant aux citoyens et associations de vérifier la disponibilité et de réserver les équipements communaux.</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-brand-400 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 mb-5 group-hover:scale-110 transition-transform">
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Alerte Population')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 transition-transform">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                     </div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Alerte Population</h3>
-                    <p class="text-slate-600 text-sm mb-6">Communiquez instantanément avec vos administrés via un bandeau d'alerte intégré au site (Urgence, Météo, Travaux) et des notifications SMS/Email.</p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm font-bold text-slate-400 uppercase tracking-wider">Sur devis</span>
-                        <span class="text-brand-600 font-bold text-sm group-hover:translate-x-1 transition-transform">Ajouter →</span>
-                    </div>
+                    <h3 class="text-lg font-black text-slate-900 mb-2">Système d'Alerte SMS/Email</h3>
+                    <p class="text-slate-600 text-sm">Diffusez des alertes urgentes (météo, travaux, sécurité) instantanément via SMS, email ou bandeau sur le site.</p>
                 </div>
-
             </div>
         </div>
 
         <div class="mb-16" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
-                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">3</span> 
-                L'Accompagnement : Maintenance annuelle
+                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">4</span> 
+                Le Maintien en Conditions Opérationnelles (MCO)
             </h2>
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-10">
-                <p class="text-slate-500 mb-8">L'hébergement et la maintenance sont inclus la première année. Ensuite, choisissez votre niveau de support en toute transparence.</p>
+                <p class="text-slate-500 mb-8">Parce qu'un site public se doit d'être sécurisé et à jour, nous proposons plusieurs niveaux d'accompagnement post-lancement. Hébergement souverain français garanti.</p>
+                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <div class="font-black text-xl mb-1">Autonomie</div>
-                        <div class="text-3xl font-black text-brand-600 mb-2">0 €<span class="text-lg text-slate-400">/an</span></div>
-                        <p class="text-sm text-slate-500">Vous gérez. Code source livré, documentation complète. Support email 5j/7.</p>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col">
+                        <div class="font-black text-xl mb-3">Niveau Autonomie</div>
+                        <p class="text-sm text-slate-500 mb-4 flex-grow">Livraison du code source et accès serveur complet. La maintenance est à la charge de vos équipes informatiques. Support par email 5j/7 pour les urgences liées à l'hébergement.</p>
                     </div>
-                    <div class="bg-brand-50 p-6 rounded-2xl border border-brand-200 relative overflow-hidden">
+                    <div class="bg-brand-50 p-6 rounded-2xl border border-brand-200 relative flex flex-col">
                         <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-lg">Le plus choisi</div>
-                        <div class="font-black text-xl mb-1 text-brand-700">Sérénité</div>
-                        <div class="text-3xl font-black text-brand-600 mb-2">39 €<span class="text-lg text-brand-400 opacity-70">/mois</span></div>
-                        <p class="text-sm text-brand-800">Mises à jour de sécurité, sauvegardes, surveillance 24/7, 2h d'évolutions incluses.</p>
+                        <div class="font-black text-xl mb-3 text-brand-700">Niveau Sérénité</div>
+                        <p class="text-sm text-brand-800 mb-4 flex-grow">Nous nous occupons de tout. Application des patchs de sécurité critiques, sauvegardes hebdomadaires externalisées, surveillance 24/7 et forfait d'heures d'évolutions inclus.</p>
                     </div>
-                    <div class="bg-slate-900 p-6 rounded-2xl">
-                        <div class="font-black text-xl mb-1 text-white">Priorité</div>
-                        <div class="text-3xl font-black text-white mb-2">79 €<span class="text-lg text-slate-500">/mois</span></div>
-                        <p class="text-sm text-slate-400">SLA 4h, astreinte technique, 5h d'évolutions, rapport mensuel, hotline dédiée.</p>
+                    <div class="bg-slate-900 p-6 rounded-2xl flex flex-col">
+                        <div class="font-black text-xl mb-3 text-white">Niveau Priorité</div>
+                        <p class="text-sm text-slate-400 mb-4 flex-grow">Idéal pour les communes nécessitant une réactivité maximale. SLA garanti (Garantie de Temps de Rétablissement), astreinte technique soirs et week-ends, hotline dédiée.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="text-center mt-12 mb-20" data-aos="fade-up">
-            <a href="contact.html" class="inline-block bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl font-black text-lg transition shadow-xl hover:shadow-2xl hover:-translate-y-1">Obtenir une proposition sur-mesure</a>
-            <p class="text-sm text-slate-500 mt-4">Devis gratuit et sans engagement sous 48h.</p>
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-8 mb-12" data-aos="fade-up">
+            <h3 class="font-black text-lg text-blue-900 mb-3 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Achats Publics & Procédure Simplifiée
+            </h3>
+            <p class="text-blue-800 text-sm leading-relaxed">
+                Nos tarifs sont étudiés pour respecter strictement les <strong>seuils de la commande publique</strong>. Conformément à l'article R2122-8 du Code de la Commande Publique, nos prestations vous permettent de procéder par marché négocié de gré à gré, sans appel d'offres fastidieux. Vous validez le devis, nous lançons le projet.
+            </p>
         </div>
 
-        <div class="bg-brand-50 border border-brand-200 rounded-2xl p-8 mb-12" data-aos="fade-up">
-            <h3 class="font-black text-lg text-brand-900 mb-3">📋 Procédure d'achat simplifiée</h3>
-            <p class="text-brand-800 text-sm leading-relaxed">Conformément à l'article <strong>R2122-8 du Code de la Commande Publique</strong>, les achats inférieurs à <strong>40 000 € HT</strong> peuvent être passés de gré à gré, sans procédure formalisée ni appel d'offres lourd. En composant votre solution sur-mesure avec Studio 4242, vous restez largement en dessous de ce seuil. Il vous suffit de nous demander un devis, de le valider, et de signer un bon de commande. <a href="faq.html#marche-public" class="underline font-bold">Voir notre FAQ sur les marchés publics →</a></p>
+        <div class="text-center mt-16 mb-10" data-aos="fade-up">
+            <h2 class="text-3xl font-black text-slate-900 mb-6">Prêt à moderniser votre commune ?</h2>
+            <a href="contact.html" class="inline-block bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl font-black text-lg transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                Contacter l'administrateur pour un devis
+            </a>
+            <p class="text-sm text-slate-500 mt-4">Étude de faisabilité et maquette initiale sans engagement.</p>
         </div>
 
     </div>
 </main>
 
-<footer class="bg-slate-900 text-slate-400 py-20 mt-auto">
+<div id="selection-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 text-white p-4 transform translate-y-full transition-transform duration-300 z-50 shadow-2xl flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8">
+    <div class="mb-3 sm:mb-0">
+        <span class="font-bold text-lg"><span id="module-count" class="text-brand-400">0</span> module(s) sélectionné(s)</span>
+        <span class="text-slate-400 text-sm hidden md:inline ml-2"> - Prêt pour le chiffrage.</span>
+    </div>
+    <div class="flex gap-4">
+        <button onclick="clearModules()" class="text-slate-400 hover:text-white text-sm font-medium transition">Réinitialiser</button>
+        <a href="contact.html" id="send-config-btn" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-2 rounded-lg font-bold text-sm transition">
+            Soumettre ma configuration
+        </a>
+    </div>
+</div>
+
+<footer class="bg-slate-900 text-slate-400 py-20 mt-auto z-40 relative">
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-2">
             <div class="flex items-center gap-3 mb-6">
@@ -303,41 +321,58 @@
 
 <script src="src/aos.js"></script>
 <script>
+// Initialisation AOS
 AOS.init({ once: true, offset: 80, duration: 700 });
-document.getElementById('mobile-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+// Menu Mobile
+document.getElementById('mobile-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// Barre de progression
 window.addEventListener('scroll', () => {
     const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     document.getElementById('progress-bar').style.width = (s/h*100)+'%';
-    const btn = document.getElementById('back-top');
-    btn.style.opacity = s > 300 ? '1' : '0';
-    btn.style.pointerEvents = s > 300 ? 'auto' : 'none';
 });
 
-/* J'ai conservé le script de ROI mais je l'ai protégé dans un try/catch 
-   au cas où les éléments liés n'existent plus sur la nouvelle maquette,
-   afin de ne pas bloquer le reste de vos scripts. */
-try {
-    function fmt(n) { return n.toLocaleString('fr-FR') + ' €'; }
-    function calcROI() {
-        const curEl = document.getElementById('current-cost');
-        if(!curEl) return;
-        const cur = parseInt(curEl.value);
-        const inc = parseInt(document.getElementById('incidents').value);
-        const incCost = parseInt(document.getElementById('incident-cost').value);
-        document.getElementById('current-cost-val').textContent = fmt(cur);
-        document.getElementById('incidents-val').textContent = inc + ' incident' + (inc > 1 ? 's' : '');
-        document.getElementById('incident-cost-val').textContent = fmt(incCost);
-        const currentTotal = (cur + inc * incCost) * 3;
-        const s4242Total = 1990 + (39 * 12 * 2); // pack + 2 ans maintenance
-        const savings = currentTotal - s4242Total;
-        document.getElementById('current-total').textContent = fmt(currentTotal);
-        document.getElementById('s4242-total').textContent = fmt(Math.max(s4242Total, 0));
-        document.getElementById('savings').textContent = savings > 0 ? fmt(savings) : '0 €';
-        document.getElementById('savings').style.color = savings > 0 ? '#facc15' : '#94a3b8';
+// --- Logique du Constructeur de Projet Interactive ---
+let selectedModules = new Set();
+
+function toggleModule(element, moduleName) {
+    if (selectedModules.has(moduleName)) {
+        selectedModules.delete(moduleName);
+        element.classList.remove('selected');
+    } else {
+        selectedModules.add(moduleName);
+        element.classList.add('selected');
     }
-    calcROI();
-} catch(e) {}
+    updateSelectionBar();
+}
+
+function clearModules() {
+    selectedModules.clear();
+    document.querySelectorAll('.module-card').forEach(card => card.classList.remove('selected'));
+    updateSelectionBar();
+}
+
+function updateSelectionBar() {
+    const bar = document.getElementById('selection-bar');
+    const countSpan = document.getElementById('module-count');
+    const btn = document.getElementById('send-config-btn');
+    
+    countSpan.textContent = selectedModules.size;
+    
+    if (selectedModules.size > 0) {
+        bar.classList.remove('translate-y-full');
+        // Encode les modules dans l'URL pour pré-remplir la page contact
+        const modulesList = Array.from(selectedModules).join(', ');
+        btn.href = `contact.html?sujet=Devis sur-mesure&modules=${encodeURIComponent(modulesList)}`;
+    } else {
+        bar.classList.add('translate-y-full');
+    }
+}
 </script>
+
 <script>
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
