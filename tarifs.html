@@ -10,8 +10,8 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Composez votre solution | Studio 4242</title>
-    <meta name="description" content="Composez le site web de votre mairie à la carte. Validation sur maquette, forfait de base évolutif et modules personnalisables.">
+    <title>Tarifs & Modules | Studio 4242</title>
+    <meta name="description" content="Composez votre solution web à la carte. Tarifs transparents, modules modulables et sans surprises. Devis gratuit pour votre mairie.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%' y='54.5%' font-family='system-ui, sans-serif' font-weight='900' font-size='34' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>42</text></svg>">
     <link href="/dist/output.css" rel="stylesheet">
     <link href="src/aos.css" rel="stylesheet">
@@ -21,6 +21,19 @@
         .module-card.selected .check-icon { display: block; }
         .module-card .check-icon { display: none; }
         .mco-card.selected { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2); }
+        .faq-item.open .faq-content { max-height: 500px; opacity: 1; }
+        .faq-item .faq-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease; }
+        .faq-toggle { transition: transform 0.3s ease; }
+        .faq-item.open .faq-toggle { transform: rotate(180deg); }
+        .cost-estimate { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); }
+        .price-estimation { animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            .module-card { padding: 0.875rem; }
+            .grid-cols-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important; }
+            .md\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            .price-table-wrapper { font-size: 0.875rem; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen overflow-x-hidden">
@@ -56,7 +69,7 @@
                             <div class="py-2">
                                 <a href="services.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Services & Fonctionnalités</a>
                                 <a href="securite.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Cybersécurité & Normes</a>
-                                <a href="tarifs.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Votre Solution Sur-Mesure</a>
+                                <a href="tarifs.html" class="block px-5 py-3 text-sm text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition">Tarifs & Modules</a>
                             </div>
                         </div>
                     </div>
@@ -77,27 +90,94 @@
 
                 <div class="flex items-center gap-4">
                     <a href="contact.html" class="hidden lg:block bg-slate-900 hover:bg-brand-600 text-white px-7 py-3 rounded-full font-bold transition shadow-xl text-sm">Contactez-nous</a>
-                    <button id="mobile-btn" aria-label="Ouvrir le menu de navigation" class="lg:hidden p-2 text-slate-900 focus:outline-none">
+                    <button id="mobile-btn" aria-label="Ouvrir le menu" class="lg:hidden p-2 text-slate-900 focus:outline-none">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40 max-h-[85vh] overflow-y-auto"></div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-2xl z-40 max-h-[85vh] overflow-y-auto">
+            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col">
+                <a href="index.html" class="text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg">Accueil</a>
+                <details class="group/mobile">
+                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
+                        L'Agence
+                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
+                        <a href="a-propos.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Notre ADN & L'Équipe</a>
+                        <a href="realisations.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Nos Réalisations</a>
+                    </div>
+                </details>
+                <details class="group/mobile">
+                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
+                        Nos Solutions
+                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
+                        <a href="services.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Services & Fonctionnalités</a>
+                        <a href="securite.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Cybersécurité & Normes</a>
+                        <a href="tarifs.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Tarifs & Modules</a>
+                    </div>
+                </details>
+                <details class="group/mobile">
+                    <summary class="flex justify-between items-center text-slate-700 font-bold text-lg p-3 hover:bg-slate-50 rounded-lg cursor-pointer list-none appearance-none [&::-webkit-details-marker]:hidden">
+                        Ressources
+                        <svg class="w-5 h-5 transition-transform group-open/mobile:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="pl-6 pb-2 space-y-2 border-l-2 border-slate-100 ml-4 mt-1">
+                        <a href="guide-rgpd.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Guide RGPD Mairies</a>
+                        <a href="faq.html" class="block p-2 text-slate-600 hover:text-brand-600 font-medium">Foire Aux Questions</a>
+                    </div>
+                </details>
+                <a href="audit.html" class="text-brand-600 font-bold text-lg p-3 hover:bg-brand-50 rounded-lg mt-2">Audit Gratuit</a>
+                <a href="contact.html" class="bg-brand-600 text-white font-bold text-lg p-4 text-center rounded-xl shadow-lg mt-4">Contactez-nous</a>
+            </div>
+        </div>
     </header>
 
-<main class="flex-grow pt-16 pb-32">
+<main class="flex-grow pt-16 pb-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="text-center mb-16" data-aos="fade-up">
+        <!-- HERO SECTION -->
+        <div class="text-center mb-20" data-aos="fade-up">
             <span class="text-brand-600 font-black tracking-widest uppercase text-sm mb-4 block">Votre projet 100% à la carte</span>
-            <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Construisez la plateforme<br>idéale pour votre commune.</h1>
-            <p class="text-xl text-slate-600 max-w-3xl mx-auto">Composez votre solution à la carte, adaptée à vos besoins réels et respectueuse de votre budget. Toutes nos prestations sont éligibles aux achats de gré à gré (< 40 000 € HT).</p>
+            <h1 class="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">Construisez la plateforme<br>idéale pour votre commune.</h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8">Composez votre solution à la carte, adaptée à vos besoins réels et respectueuse de votre budget. Toutes nos prestations sont éligibles aux achats de gré à gré (<strong>&lt; 40 000 € HT</strong>).</p>
+            <a href="#constructeur" class="inline-block bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-lg font-bold transition shadow-lg">Commencer la composition</a>
         </div>
 
-        <div class="mb-16" data-aos="fade-up" data-aos-delay="0">
+        <!-- PROCESS TIMELINE -->
+        <div class="mb-20" data-aos="fade-up" data-aos-delay="50">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-12 text-center">Notre processus en 4 étapes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-brand-600 shadow-sm">
+                    <div class="text-3xl font-black text-brand-600 mb-3">1</div>
+                    <h3 class="font-black text-slate-900 mb-2">Conception</h3>
+                    <p class="text-sm text-slate-600">Réalisation d'une maquette complète de votre future page d'accueil avec votre identité visuelle.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-brand-600 shadow-sm">
+                    <div class="text-3xl font-black text-brand-600 mb-3">2</div>
+                    <h3 class="font-black text-slate-900 mb-2">Validation</h3>
+                    <p class="text-sm text-slate-600">Ajustements jusqu'à votre satisfaction, puis signature du devis.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-brand-600 shadow-sm">
+                    <div class="text-3xl font-black text-brand-600 mb-3">3</div>
+                    <h3 class="font-black text-slate-900 mb-2">Développement</h3>
+                    <p class="text-sm text-slate-600">Mise en production rapide avec tous vos modules personnalisés.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border-l-4 border-brand-600 shadow-sm">
+                    <div class="text-3xl font-black text-brand-600 mb-3">4</div>
+                    <h3 class="font-black text-slate-900 mb-2">Maintenance</h3>
+                    <p class="text-sm text-slate-600">Accompagnement continu avec le MCO adapté à vos besoins.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: CONCEPTION -->
+        <div class="mb-20" data-aos="fade-up" data-aos-delay="100">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
-                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">1</span> 
+                <span class="bg-brand-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg">1</span> 
                 Conception & Validation de la Maquette
             </h2>
             <div class="bg-slate-900 text-white p-8 md:p-12 rounded-3xl shadow-xl relative overflow-hidden">
@@ -106,212 +186,294 @@
                 </div>
                 <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
                     <div class="flex-1">
-                        <h3 class="text-3xl font-black mb-4">On ne développe rien sans votre accord.</h3>
+                        <h3 class="text-3xl md:text-4xl font-black mb-4">On ne développe rien sans votre accord.</h3>
                         <p class="text-slate-300 mb-6 text-lg">Notre méthodologie commence toujours par une phase de design. Nous réalisons une maquette complète de la future page d'accueil de votre commune, reprenant votre identité visuelle et votre blason.</p>
                         <ul class="space-y-4 text-slate-200">
-                            <li class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center text-brand-400">🎨</div> Création d'une identité visuelle moderne et respectueuse de votre histoire.</li>
-                            <li class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center text-brand-400">🤝</div> Ajustements possibles jusqu'à validation par le conseil municipal.</li>
-                            <li class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brand-500/30 flex items-center justify-center text-brand-400">✅</div> <strong>Engagement zéro risque :</strong> le développement ne commence qu'après signature.</li>
+                            <li class="flex items-center gap-3"><span class="text-brand-400 text-2xl">🎨</span><span>Création d'une identité visuelle moderne et respectueuse de votre histoire</span></li>
+                            <li class="flex items-center gap-3"><span class="text-brand-400 text-2xl">🤝</span><span>Ajustements illimités jusqu'à validation par votre équipe</span></li>
+                            <li class="flex items-center gap-3"><span class="text-brand-400 text-2xl">✅</span><span><strong>Engagement zéro risque :</strong> le développement commence après signature</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mb-16" data-aos="fade-up" data-aos-delay="100">
+        <!-- SECTION 2: SOCLE -->
+        <div class="mb-20" data-aos="fade-up" data-aos-delay="150">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-6 flex items-center gap-4">
-                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">2</span> 
+                <span class="bg-brand-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg">2</span> 
                 Le Socle Fondamental : Mairie Connectée
             </h2>
             <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border-2 border-slate-200">
                 <div class="flex flex-col lg:flex-row gap-8">
                     <div class="flex-1">
-                        <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full mb-4">
-                            Inclus d'office
+                        <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 text-xs font-bold px-4 py-2 rounded-full mb-6">
+                            ✓ Inclus d'office
                         </div>
-                        <h3 class="text-2xl font-black text-slate-900 mb-3">Site Web Institutionnel & Sécurisé</h3>
-                        <p class="text-slate-600 mb-6">La fondation incontournable pour assurer une présence efficace et légale sur internet. Ce socle garantit votre conformité aux normes gouvernementales sans nécessiter d'expertise technique en interne.</p>
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-4">Site Web Institutionnel & Sécurisé</h3>
+                        <p class="text-slate-600 mb-6 text-lg">La fondation incontournable pour assurer une présence efficace et légale sur internet. Ce socle garantit votre conformité aux normes gouvernementales.</p>
                         
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm text-slate-700">
-                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Design 100% responsive (Mobile, Tablette, PC)</span></div>
-                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Conformité stricte <strong>RGAA, RGPD, ANSSI</strong></span></div>
-                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Architecture de l'information (jusqu'à 15 pages)</span></div>
-                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Module d'accueil & actualités</span></div>
-                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Formulaire de contact sécurisé</span></div>
-                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black mt-0.5">✓</span><span>Interface d'administration ultra-simplifiée</span></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-700">
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black text-xl mt-0.5">✓</span><span><strong>Design 100% responsive</strong> (Mobile, Tablette, PC)</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black text-xl mt-0.5">✓</span><span><strong>Conformité</strong> RGAA, RGPD, ANSSI</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black text-xl mt-0.5">✓</span><span><strong>Architecture</strong> jusqu'à 15 pages</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black text-xl mt-0.5">✓</span><span><strong>Module d'accueil</strong> & actualités</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black text-xl mt-0.5">✓</span><span><strong>Formulaire de contact</strong> sécurisé</span></div>
+                            <div class="flex gap-3 items-start"><span class="text-brand-600 font-black text-xl mt-0.5">✓</span><span><strong>Interface d'administration</strong> ultra-simplifiée</span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mb-16" data-aos="fade-up" data-aos-delay="150">
+        <!-- SECTION 3: CONSTRUCTEUR DE MODULES -->
+        <div class="mb-20" data-aos="fade-up" data-aos-delay="200" id="constructeur">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-2 flex items-center gap-4">
-                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">3</span> 
-                Construisez votre plateforme (Sélectionnez vos modules)
+                <span class="bg-brand-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg">3</span> 
+                Sélectionnez vos modules
             </h2>
-            <p class="text-slate-500 mb-8 ml-14">Cliquez sur les fonctionnalités que vous souhaitez ajouter à votre socle pour préparer votre cahier des charges.</p>
+            <p class="text-slate-500 mb-8 ml-16 text-base">Cliquez sur les fonctionnalités que vous souhaitez ajouter à votre socle pour composer votre solution parfaite.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modules-container">
                 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Espace Élus')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Espace Élus')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">👥</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Intranet Élus & Agents</h3>
-                    <p class="text-slate-600 text-sm">Espace privé sécurisé pour partager ordres du jour, CR de conseils, et documents confidentiels.</p>
+                    <p class="text-slate-600 text-sm">Espace privé sécurisé pour partager ordres du jour, CR de conseils et documents confidentiels.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 3 500 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Démarches en ligne')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Démarches en ligne')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">📋</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Guichet & Démarches</h3>
                     <p class="text-slate-600 text-sm">Dématérialisation des CERFA, demande d'actes d'état civil, prise de RDV passeport/CNI.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 5 000 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Signalement Citoyen')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Signalement Citoyen')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">⚠️</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Signalement Incident</h3>
-                    <p class="text-slate-600 text-sm">Outil permettant aux citoyens de signaler un problème (voirie, éclairage, propreté) avec photo et géolocalisation.</p>
+                    <p class="text-slate-600 text-sm">Citoyens signalent des problèmes (voirie, éclairage, propreté) avec photo et géolocalisation.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 2 500 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Démocratie Participative')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Démocratie Participative')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">💬</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Démocratie Participative</h3>
-                    <p class="text-slate-600 text-sm">Sondages en ligne, boîte à idées et consultations citoyennes pour impliquer les habitants dans les projets locaux.</p>
+                    <p class="text-slate-600 text-sm">Sondages en ligne, boîte à idées et consultations citoyennes pour impliquer les habitants.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 2 000 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Portail Famille & Cantine')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Portail Famille & Cantine')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">💳</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Portail Famille / Paiement</h3>
-                    <p class="text-slate-600 text-sm">Module connecté à PayFIP pour le paiement de la cantine, crèche, périscolaire, avec facturation automatique.</p>
+                    <p class="text-slate-600 text-sm">Module connecté à PayFIP pour paiement de cantine, crèche, périscolaire avec facturation automatique.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 4 000 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Cartographie Interactive')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Cartographie Interactive')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">🗺️</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Cartographie Interactive</h3>
-                    <p class="text-slate-600 text-sm">Carte visuelle présentant le PLU, les points d'apport volontaire (poubelles), défibrillateurs, et zones de travaux.</p>
+                    <p class="text-slate-600 text-sm">Carte visuelle avec PLU, points d'apport volontaire, défibrillateurs et zones de travaux.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 3 500 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Annuaire & Vie Locale')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Annuaire & Vie Locale')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">📖</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Annuaire Associations</h3>
                     <p class="text-slate-600 text-sm">Répertoire interactif des associations, commerçants et professionnels de santé de la commune.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 1 500 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Réservation de Salles')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Réservation de Salles')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">📅</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Réservation de Salles</h3>
-                    <p class="text-slate-600 text-sm">Agenda en ligne permettant aux citoyens et associations de vérifier la disponibilité et de réserver les équipements communaux.</p>
+                    <p class="text-slate-600 text-sm">Agenda en ligne pour vérifier disponibilité et réserver les équipements communaux.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 2 000 €</div>
                 </div>
 
-                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative" onclick="toggleModule(this, 'Alerte Population')">
-                    <div class="check-icon absolute top-6 right-6 text-brand-600">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                <div class="module-card cursor-pointer bg-white p-6 rounded-3xl border-2 border-slate-100 hover:border-brand-300 transition relative shadow-sm hover:shadow-md" onclick="toggleModule(this, 'Alerte Population')">
+                    <div class="check-icon absolute top-6 right-6 text-brand-600 bg-brand-100 w-8 h-8 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
-                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                    </div>
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 mb-4 text-xl">🚨</div>
                     <h3 class="text-lg font-black text-slate-900 mb-2">Système d'Alerte SMS/Email</h3>
-                    <p class="text-slate-600 text-sm">Diffusez des alertes urgentes (météo, travaux, sécurité) instantanément via SMS, email ou bandeau sur le site.</p>
+                    <p class="text-slate-600 text-sm">Diffusez des alertes urgentes (météo, travaux, sécurité) via SMS, email ou bandeau site.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-brand-600 font-bold text-sm">À partir de 3 000 €</div>
                 </div>
             </div>
         </div>
 
-        <div class="mb-16" data-aos="fade-up" data-aos-delay="200">
+        <!-- SECTION 4: MCO -->
+        <div class="mb-20" data-aos="fade-up" data-aos-delay="250">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-2 flex items-center gap-4">
-                <span class="bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg">4</span> 
-                Le Maintien en Conditions Opérationnelles (MCO)
+                <span class="bg-brand-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-lg">4</span> 
+                Maintenance & Support Continu
             </h2>
-            <p class="text-slate-500 mb-8 ml-14">Sélectionnez le niveau d'accompagnement souhaité après le lancement de votre site.</p>
+            <p class="text-slate-500 mb-8 ml-16 text-base">Sélectionnez le niveau d'accompagnement après le lancement de votre site.</p>
             
             <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-10">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     
-                    <div id="mco-autonomie" class="mco-card cursor-pointer bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col transition hover:border-brand-300" onclick="selectMCO('Niveau Autonomie')">
-                        <div class="font-black text-xl mb-3">Niveau Autonomie</div>
-                        <p class="text-sm text-slate-500 mb-4 flex-grow">Livraison du code source et accès serveur complet. La maintenance est à la charge de vos équipes informatiques. Support par email pour les urgences liées à l'hébergement.</p>
+                    <div id="mco-autonomie" class="mco-card cursor-pointer bg-slate-50 p-6 rounded-2xl border-2 border-slate-100 flex flex-col transition hover:border-brand-300 hover:shadow-md" onclick="selectMCO('Niveau Autonomie')">
+                        <div class="font-black text-xl mb-2">Niveau Autonomie</div>
+                        <div class="text-3xl font-black text-brand-600 mb-4">Sur devis</div>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow">Livraison du code source et accès serveur complet. Maintenance à la charge de vos équipes IT. Support par email pour les urgences.</p>
+                        <ul class="text-xs text-slate-600 space-y-2">
+                            <li>✓ Code source livré</li>
+                            <li>✓ Support par email</li>
+                            <li>✓ Liberté totale</li>
+                        </ul>
                     </div>
                     
-                    <div id="mco-serenite" class="mco-card selected cursor-pointer bg-brand-50 p-6 rounded-2xl border-2 border-brand-200 relative flex flex-col transition" onclick="selectMCO('Niveau Sérénité')">
-                        <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-lg">Recommandé</div>
-                        <div class="font-black text-xl mb-3 text-brand-700">Niveau Sérénité</div>
-                        <p class="text-sm text-brand-800 mb-4 flex-grow">Nous nous occupons de tout. Application des patchs de sécurité critiques, sauvegardes externalisées, surveillance 24/7 et forfait d'heures d'évolutions inclus.</p>
+                    <div id="mco-serenite" class="mco-card selected cursor-pointer bg-brand-50 p-6 rounded-2xl border-2 border-brand-300 relative flex flex-col transition shadow-md" onclick="selectMCO('Niveau Sérénité')">
+                        <div class="absolute top-0 right-0 bg-brand-600 text-white text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-bl-lg">⭐ Recommandé</div>
+                        <div class="font-black text-xl text-brand-700 mb-2">Niveau Sérénité</div>
+                        <div class="text-3xl font-black text-brand-600 mb-4">À partir de<br>500 €/mois</div>
+                        <p class="text-sm text-brand-800 mb-6 flex-grow">Nous gérons tout. Patchs de sécurité critiques, sauvegardes externalisées, surveillance 24/7 et forfait d'évolutions inclus.</p>
+                        <ul class="text-xs text-brand-700 space-y-2 font-medium">
+                            <li>✓ Maintenance complète</li>
+                            <li>✓ Sauvegardes quotidiennes</li>
+                            <li>✓ Surveillance 24/7</li>
+                            <li>✓ 10h d'évolutions/an</li>
+                        </ul>
                     </div>
                     
-                    <div id="mco-priorite" class="mco-card cursor-pointer bg-slate-900 p-6 rounded-2xl border-2 border-slate-900 flex flex-col transition hover:border-brand-500" onclick="selectMCO('Niveau Priorité')">
-                        <div class="font-black text-xl mb-3 text-white">Niveau Priorité</div>
-                        <p class="text-sm text-slate-400 mb-4 flex-grow">Idéal pour les communes nécessitant une réactivité maximale. SLA garanti (Temps de rétablissement), astreinte technique soirs/week-ends, hotline dédiée.</p>
+                    <div id="mco-priorite" class="mco-card cursor-pointer bg-slate-900 p-6 rounded-2xl border-2 border-slate-900 flex flex-col transition hover:border-brand-500 hover:shadow-md" onclick="selectMCO('Niveau Priorité')">
+                        <div class="font-black text-xl text-white mb-2">Niveau Priorité</div>
+                        <div class="text-3xl font-black text-brand-400 mb-4">À partir de<br>1200 €/mois</div>
+                        <p class="text-sm text-slate-300 mb-6 flex-grow">Pour communes très actives. SLA garanti (2h rétablissement), astreinte technique soirs/week-ends, hotline dédiée.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 font-medium">
+                            <li>✓ SLA garanti 2h</li>
+                            <li>✓ Astreinte 24/7</li>
+                            <li>✓ Hotline prioritaire</li>
+                            <li>✓ 20h d'évolutions/an</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-8 mb-12" data-aos="fade-up">
+        <!-- PRICING INFO BOX -->
+        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-8 mb-20" data-aos="fade-up">
             <h3 class="font-black text-lg text-blue-900 mb-3 flex items-center gap-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Achats Publics & Procédure Simplifiée
+                💰 Achats Publics & Procédure Simplifiée
             </h3>
-            <p class="text-blue-800 text-sm leading-relaxed">
-                Nos tarifs sont étudiés pour respecter strictement les <strong>seuils de la commande publique</strong>. Conformément à l'article R2122-8 du Code de la Commande Publique, nos prestations vous permettent de procéder par marché négocié de gré à gré, sans appel d'offres fastidieux. Vous validez le devis, nous lançons le projet.
+            <p class="text-blue-800 text-sm leading-relaxed mb-3">
+                Nos tarifs sont étudiés pour respecter strictement les <strong>seuils de la commande publique</strong>. Conformément à l'article R2122-8 du Code de la Commande Publique, nos prestations permettent une procédure de marché négocié de gré à gré (<strong>&lt; 40 000 € HT</strong>) sans appel d'offres fastidieux.
             </p>
+            <p class="text-blue-700 text-sm font-bold">👉 Vous validez le devis, nous lançons le projet immédiatement.</p>
+        </div>
+
+        <!-- FAQ SECTION -->
+        <div class="mb-20" data-aos="fade-up" data-aos-delay="300">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-10 text-center">Questions Fréquentes sur nos Tarifs</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                
+                <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <button class="w-full p-6 flex justify-between items-center font-bold text-slate-900 hover:bg-slate-50 transition text-left" onclick="toggleFaq(this)">
+                        <span>Combien coûte le socle seul sans modules ?</span>
+                        <svg class="faq-toggle w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-600 text-sm">
+                        Le socle « Mairie Connectée » est proposé à partir de <strong>12 000 € HT</strong> incluant la conception, validation de maquette et le site web institutionnel complet avec jusqu'à 15 pages. Chaque module supplémentaire s'ajoute à ce forfait.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <button class="w-full p-6 flex justify-between items-center font-bold text-slate-900 hover:bg-slate-50 transition text-left" onclick="toggleFaq(this)">
+                        <span>Puis-je ajouter des modules après le lancement ?</span>
+                        <svg class="faq-toggle w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-600 text-sm">
+                        <strong>Oui, absolument !</strong> Nos solutions sont conçues pour être modulables. Vous pouvez ajouter des fonctionnalités à tout moment. Cela sera intégré sous 2-4 semaines selon la complexité du module choisi.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <button class="w-full p-6 flex justify-between items-center font-bold text-slate-900 hover:bg-slate-50 transition text-left" onclick="toggleFaq(this)">
+                        <span>Les tarifs incluent-ils le préalable de maquette ?</span>
+                        <svg class="faq-toggle w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-600 text-sm">
+                        <strong>Oui !</strong> La conception d'une maquette complète et sa validation par votre équipe font partie intégrante de notre processus. On ne code rien sans votre accord. Pas de surprise en fin de projet.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <button class="w-full p-6 flex justify-between items-center font-bold text-slate-900 hover:bg-slate-50 transition text-left" onclick="toggleFaq(this)">
+                        <span>Quel est le délai global du projet ?</span>
+                        <svg class="faq-toggle w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-600 text-sm">
+                        En moyenne : <strong>2-3 mois</strong> du premier meeting à la mise en ligne. <strong>Semaine 1-2 :</strong> Conception maquette / <strong>Semaine 3-4 :</strong> Validation / <strong>Semaine 5-10 :</strong> Développement / <strong>Semaine 11-12 :</strong> Tests & mise en ligne.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition">
+                    <button class="w-full p-6 flex justify-between items-center font-bold text-slate-900 hover:bg-slate-50 transition text-left" onclick="toggleFaq(this)">
+                        <span>Est-ce vraiment sans engagement et sans surprises ?</span>
+                        <svg class="faq-toggle w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-600 text-sm">
+                        <strong>100% transparent.</strong> Tous nos prix sont fixes et convenus d'avance. Vous recevez un devis détaillé avant chaque étape. Si des ajustements deviennent nécessaires, nous les négocions ensemble. Aucune facture surprise.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="bg-gradient-to-r from-brand-600 to-brand-700 rounded-3xl p-12 text-center text-white shadow-xl" data-aos="zoom-in">
+            <h2 class="text-3xl md:text-4xl font-black mb-4">Prêt à composer votre solution ?</h2>
+            <p class="text-brand-100 mb-8 text-lg max-w-2xl mx-auto">Débutez maintenant en sélectionnant vos modules ci-dessus, puis contactez-nous pour obtenir un devis détaillé et commencer votre maquette.</p>
+            <a href="#constructeur" class="inline-block bg-white text-brand-600 px-8 py-4 rounded-lg font-bold hover:bg-slate-100 transition shadow-lg">Retourner au configurateur</a>
         </div>
 
     </div>
 </main>
 
-<div id="selection-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 text-white p-4 transform translate-y-full transition-transform duration-300 z-50 shadow-2xl flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8">
-    <div class="mb-3 sm:mb-0">
-        <span class="font-bold text-lg"><span id="module-count" class="text-brand-400">0</span> module(s) sélectionné(s)</span>
-        <span class="text-slate-400 text-sm hidden md:inline ml-2" id="mco-display"> - MCO : Sérénité</span>
+<!-- SELECTION BAR -->
+<div id="selection-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 text-white p-4 transform translate-y-full transition-transform duration-300 z-50 shadow-2xl flex flex-col sm:flex-row items-center justify-between px-4 sm:px-8 gap-4">
+    <div class="text-center sm:text-left">
+        <span class="font-bold text-lg block sm:inline"><span id="module-count" class="text-brand-400">0</span> module(s) sélectionné(s)</span>
+        <span class="text-slate-400 text-sm ml-2 hidden md:inline" id="mco-display"> - MCO : Sérénité</span>
     </div>
-    <div class="flex gap-4">
-        <button onclick="clearModules()" class="text-slate-400 hover:text-white text-sm font-medium transition">Réinitialiser</button>
-        <a href="contact.html" id="send-config-btn" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-2 rounded-lg font-bold text-sm transition text-center">
+    <div class="flex gap-4 w-full sm:w-auto">
+        <button onclick="clearModules()" class="text-slate-400 hover:text-white text-sm font-medium transition flex-1 sm:flex-none">Réinitialiser</button>
+        <a href="contact.html" id="send-config-btn" class="bg-brand-600 hover:bg-brand-500 text-white px-6 py-2 rounded-lg font-bold text-sm transition text-center flex-1 sm:flex-none">
             Soumettre ma configuration
         </a>
     </div>
 </div>
 
 <footer class="bg-slate-900 text-slate-400 py-20 mt-auto z-40 relative">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-2">
             <div class="flex items-center gap-3 mb-6">
                 <div class="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold">42</div>
@@ -332,10 +494,10 @@
         <div>
             <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
             <ul class="space-y-3 text-sm">
-                <li>📞 <a href="tel:0783494849" class="hover:text-white">07 83 49 48 49</a></li>
+                <li>📞 <a href="tel:0783494849" class="hover:text-white transition">07 83 49 48 49</a></li>
                 <li>SIRET : 102 977 683 00014</li>
                 <li>83500 La Seyne-sur-Mer</li>
-                <li><a href="mentions-legales.html" class="underline hover:text-white">Mentions Légales</a></li>
+                <li><a href="mentions-legales.html" class="underline hover:text-white transition">Mentions Légales</a></li>
             </ul>
         </div>
     </div>
@@ -345,18 +507,21 @@
 <script>
 AOS.init({ once: true, offset: 80, duration: 700 });
 
+// Mobile menu toggle
 document.getElementById('mobile-btn').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.toggle('hidden');
 });
 
+// Progress bar
 window.addEventListener('scroll', () => {
-    const s = document.documentElement.scrollTop, h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const s = document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     document.getElementById('progress-bar').style.width = (s/h*100)+'%';
 });
 
-// --- Logique du Constructeur ---
+// --- Module Constructor Logic ---
 let selectedModules = new Set();
-let selectedMCO = 'Niveau Sérénité'; // Valeur par défaut
+let selectedMCO = 'Niveau Sérénité';
 
 function toggleModule(element, moduleName) {
     if (selectedModules.has(moduleName)) {
@@ -371,11 +536,8 @@ function toggleModule(element, moduleName) {
 
 function selectMCO(mcoName) {
     selectedMCO = mcoName;
-    
-    // Nettoyage de la sélection visuelle des cartes MCO
     document.querySelectorAll('.mco-card').forEach(card => card.classList.remove('selected'));
     
-    // Ajout de la sélection sur la carte cliquée
     if(mcoName === 'Niveau Autonomie') document.getElementById('mco-autonomie').classList.add('selected');
     if(mcoName === 'Niveau Sérénité') document.getElementById('mco-serenite').classList.add('selected');
     if(mcoName === 'Niveau Priorité') document.getElementById('mco-priorite').classList.add('selected');
@@ -386,7 +548,7 @@ function selectMCO(mcoName) {
 function clearModules() {
     selectedModules.clear();
     document.querySelectorAll('.module-card').forEach(card => card.classList.remove('selected'));
-    selectMCO('Niveau Sérénité'); // Réinitialise le MCO par défaut
+    selectMCO('Niveau Sérénité');
     updateSelectionBar();
 }
 
@@ -399,16 +561,19 @@ function updateSelectionBar() {
     countSpan.textContent = selectedModules.size;
     mcoDisplay.textContent = ` - MCO : ${selectedMCO.replace('Niveau ', '')}`;
     
-    // La barre s'affiche dès qu'il y a 1 module OU qu'un MCO est choisi (vu que MCO est choisi par défaut, on l'affiche s'il y a un module pour ne pas polluer l'écran d'entrée)
     if (selectedModules.size > 0) {
         bar.classList.remove('translate-y-full');
-        
-        // Encode les modules et le MCO dans l'URL pour la page contact
         const modulesList = Array.from(selectedModules).join(', ');
         btn.href = `contact.html?modules=${encodeURIComponent(modulesList)}&mco=${encodeURIComponent(selectedMCO)}`;
     } else {
         bar.classList.add('translate-y-full');
     }
+}
+
+// FAQ Toggle
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    item.classList.toggle('open');
 }
 </script>
 </body>
